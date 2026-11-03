@@ -1,16 +1,19 @@
 package com.example.restaurant_management_app.model;
 
 public abstract class Staff {
+    public enum Status{
+        FREE, BUSY
+    }
     private static int counter=1;
     private String name;
     private String id;
-    private String status; // neue Eigenschaft
+    private Status status; // neue Eigenschaft
 
     public Staff( String name) {
         this.id = String.valueOf(counter);
         counter++;
         this.name = name;
-        this.status="Free";
+        this.status=Status.BUSY;
     }
 
     public Staff(){}
@@ -31,11 +34,11 @@ public abstract class Staff {
         this.name = name;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

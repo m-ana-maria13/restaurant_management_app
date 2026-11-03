@@ -4,25 +4,25 @@ package com.example.restaurant_management_app.service;
 import com.example.restaurant_management_app.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_management_app.repository.BillInMemoryRepository;
-import com.example.restaurant_management_app.repository.CustomerInMemoryRepository;
-import com.example.restaurant_management_app.repository.MenuItemInMemoryRepository;
-import com.example.restaurant_management_app.repository.OrderInMemoryRepository;
+import com.example.restaurant_management_app.repository.BillRepository;
+import com.example.restaurant_management_app.repository.CustomerRepository;
+import com.example.restaurant_management_app.repository.MenuRepository;
+import com.example.restaurant_management_app.repository.OrderRepository;
 
 import java.util.List;
 
 @Service
 public class BillService {
-    private final BillInMemoryRepository billRepository;
-    private final OrderInMemoryRepository orderRepository;
-    private final CustomerInMemoryRepository customerRepository;
-    private final MenuItemInMemoryRepository menuItemRepository;
+    private final BillRepository billRepository;
+    private final OrderRepository orderRepository;
+    private final CustomerRepository customerRepository;
+    private final MenuRepository menuItemRepository;
     private final TableService tableService;
 
     @Autowired
-    public BillService(BillInMemoryRepository billRepository, OrderInMemoryRepository orderRepository,
-                       CustomerInMemoryRepository customerRepository,
-                       MenuItemInMemoryRepository menuItemRepository,TableService tableService) {
+    public BillService(BillRepository billRepository, OrderRepository orderRepository,
+                       CustomerRepository customerRepository,
+                       MenuRepository menuItemRepository, TableService tableService) {
         this.billRepository = billRepository;
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
@@ -67,7 +67,7 @@ public class BillService {
         if(order==null){
             throw new IllegalArgumentException("Order null!");
         }
-        order.setStatus("Paid");
+        order.setStatus(Order.Status.CLOSED);
         orderRepository.save(order);
 
         if(!order.getTakeAway() && order.getTableId()!=null){

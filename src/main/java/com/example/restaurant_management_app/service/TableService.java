@@ -3,35 +3,35 @@ package com.example.restaurant_management_app.service;
 import com.example.restaurant_management_app.model.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_management_app.repository.TableInMemoryRepository;
+import com.example.restaurant_management_app.repository.TableRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TableService {
-    private final TableInMemoryRepository  tableRepository;
+    private final TableRepository tableRepository;
 
     @Autowired
-    TableService(TableInMemoryRepository tables){
+    TableService(TableRepository tables){
         this.tableRepository = tables;
     }
 
     public Table occupyTable(String tableId) {
         Table table = existingTable(tableId);
 
-        if ((table.getOccupiedStatus()).equalsIgnoreCase("occupied")) {
+        if ((table.getOccupiedStatus()).equals(Table.Status.OCCUPIED)) {
             throw new IllegalStateException("Table already occupied!");
         }
 
-        table.setOccupiedStatus("Occupied");
+        table.setOccupiedStatus(Table.Status.OCCUPIED);
         return tableRepository.save(table);
     }
 
     public Table releaseTable(String tableId) {
         Table table = existingTable(tableId);
 
-        table.setOccupiedStatus("Free");
+        table.setOccupiedStatus(Table.Status.FREE);
         return tableRepository.save(table);
     }
 
@@ -52,7 +52,7 @@ public class TableService {
     public List<Table> getAvailableTables() {
         List<Table> available = new ArrayList<>();
         for (Table table : tableRepository.findAll()) {
-            if ((table.getOccupiedStatus()).equalsIgnoreCase("Free")) {
+            if ((table.getOccupiedStatus()).equals(Table.Status.FREE)) {
                 available.add(table);
             }
         }

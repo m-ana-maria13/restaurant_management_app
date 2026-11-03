@@ -4,7 +4,7 @@ import com.example.restaurant_management_app.model.Table;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TableInMemoryRepository extends InMemoryRepository<Table> {
+public class TableRepository extends InMemoryRepository<Table> {
 
     @Override
     public String getId(Table entity) {

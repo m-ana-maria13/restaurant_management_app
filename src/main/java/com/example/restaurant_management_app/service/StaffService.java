@@ -5,17 +5,16 @@ import com.example.restaurant_management_app.model.Server;
 import com.example.restaurant_management_app.model.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_management_app.repository.StaffInMemoryRepository;
+import com.example.restaurant_management_app.repository.StaffRepository;
 
-import javax.management.modelmbean.InvalidTargetObjectTypeException;
 import java.util.List;
 
 @Service
 public class StaffService {
-    private final StaffInMemoryRepository staffRepository;
+    private final StaffRepository staffRepository;
 
     @Autowired
-    StaffService(StaffInMemoryRepository staffRepo) {
+    StaffService(StaffRepository staffRepo) {
         this.staffRepository = staffRepo;
     }
 
@@ -77,14 +76,14 @@ public class StaffService {
 
     public Boolean isBusy(String id) {
         Staff staff = existingStaff(id);
-        return (staff.getStatus()).equalsIgnoreCase("Occupied");
+        return (staff.getStatus()).equals(Staff.Status.BUSY);
     }
 
-    public  Staff changeStatus(String id, String status){
+    public  Staff changeStatus(String id, Staff.Status status){
         Staff staff = existingStaff(id);
 
         if (status == null
-                || !(status.equalsIgnoreCase("Occupied") || status.equalsIgnoreCase("Free"))) {
+                || !(status.equals(Staff.Status.BUSY) || status.equals(Staff.Status.FREE))) {
             throw new IllegalArgumentException("Status must be Occupied or Free");
         }
 

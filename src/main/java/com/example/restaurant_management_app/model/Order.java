@@ -5,11 +5,14 @@ import java.util.List;
 
     public class Order {
 
+        public enum Status{
+            OPEN, CLOSED
+        }
         private static int counter=1;
         private String id;
         private String customerId;
         private String tableId;
-        private String status; //open/closed
+        private Status status; //open/closed
         private List<OrderLine> orderLines;
         private List<OrderAssignment> assignments;
         private Boolean takeAway; // daca e takeaway, atunci nu se mai ocupa masa, ! nu se face delivery, vine clientul
@@ -19,7 +22,7 @@ import java.util.List;
             counter++;
             this.customerId = customerId;
             this.tableId = tableId;
-            this.status = "open";
+            this.status = Status.OPEN;
             this.takeAway= takeAway;
             this.orderLines = new ArrayList<OrderLine>();
             this.assignments = new ArrayList<OrderAssignment>();
@@ -52,11 +55,11 @@ import java.util.List;
             this.tableId = tableId;
         }
 
-        public String getStatus() {
+        public Status getStatus() {
             return status;
         }
 
-        public void setStatus(String status) {
+        public void setStatus(Status status) {
             this.status = status;
         }
 

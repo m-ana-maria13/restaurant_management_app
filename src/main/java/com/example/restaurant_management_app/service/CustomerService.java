@@ -4,17 +4,17 @@ package com.example.restaurant_management_app.service;
 import com.example.restaurant_management_app.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_management_app.repository.CustomerInMemoryRepository;
+import com.example.restaurant_management_app.repository.CustomerRepository;
 
 import java.util.List;
 
 @Service
 public class CustomerService {
 
-    private final CustomerInMemoryRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     @Autowired
-    public CustomerService(CustomerInMemoryRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 

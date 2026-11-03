@@ -4,18 +4,21 @@ import java.util.List;
 
 public class Table {
 
+    public enum Status{
+        FREE, OCCUPIED
+    }
     private static int counter=1;
     private String id;
     private int number;
     private List<Order> orders;
-    private String occupiedStatus;
+    private Status occupiedStatus;
 
     public Table(int number, List<Order> orders) {
         this.id = String.valueOf(counter);
         counter++;
         this.number = number;
         this.orders = orders;
-        this.occupiedStatus = "Free";
+        this.occupiedStatus = Status.OCCUPIED;
     }
 
     public Table(){}
@@ -45,11 +48,11 @@ public class Table {
         this.orders = orders;
     }
 
-    public String getOccupiedStatus() {
+    public Status getOccupiedStatus() {
         return occupiedStatus;
     }
 
-    public void setOccupiedStatus(String occupiedStatus) {
+    public void setOccupiedStatus(Status occupiedStatus) {
         this.occupiedStatus = occupiedStatus;
     }
 }

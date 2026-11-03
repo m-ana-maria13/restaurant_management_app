@@ -11,19 +11,19 @@ import java.util.List;
 
 @Service
 public class OrderService {
-    private final OrderInMemoryRepository orderRepository ;
-    private final CustomerInMemoryRepository customerRepository ;
-    private final TableInMemoryRepository tableRepository ;
+    private final OrderRepository orderRepository ;
+    private final CustomerRepository customerRepository ;
+    private final TableRepository tableRepository ;
     private final TableService tableService;
-    private final MenuItemInMemoryRepository menuItemRepository ;
-    private final StaffInMemoryRepository staffRepository ;
+    private final MenuRepository menuItemRepository ;
+    private final StaffRepository staffRepository ;
     private final StaffService staffService;
 
 
     @Autowired
-    public OrderService(OrderInMemoryRepository orderRepository, CustomerInMemoryRepository customerRepository,
-                        TableInMemoryRepository tableRepository,TableService tableService,MenuItemInMemoryRepository  menuItemRepository,
-                        StaffInMemoryRepository staffRepository, StaffService staffService) {
+    public OrderService(OrderRepository orderRepository, CustomerRepository customerRepository,
+                        TableRepository tableRepository, TableService tableService, MenuRepository menuItemRepository,
+                        StaffRepository staffRepository, StaffService staffService) {
         this.orderRepository = orderRepository;
         this.customerRepository=customerRepository;
         this.tableRepository= tableRepository;
@@ -64,7 +64,7 @@ public class OrderService {
         if(order==null){
             throw new IllegalArgumentException("Invalid Order!");
         }
-        if(!"open".equalsIgnoreCase(order.getStatus())){
+        if(!Order.Status.OPEN.equals(order.getStatus())){
                 throw new IllegalStateException("Order not opened, cannot add Item!");
         }
 
@@ -115,7 +115,7 @@ public class OrderService {
         OrderAssignment orderAssignment= new OrderAssignment(orderId,staffId);
         order.getAssignments().add(orderAssignment);
 
-        staffService.changeStatus(staffId, "Occupied");
+        staffService.changeStatus(staffId,Staff.Status.BUSY);
 
         return orderRepository.save(order);
     }
@@ -126,7 +126,7 @@ public class OrderService {
             throw new IllegalArgumentException("Invalid Order!");
         }
 
-        order.setStatus("Closed");
+        order.setStatus(Order.Status.CLOSED);
 
         if(!order.getTakeAway() &&  order.getTableId() != null){
            tableService.releaseTable(order.getTableId());

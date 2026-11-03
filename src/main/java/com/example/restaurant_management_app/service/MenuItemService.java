@@ -3,16 +3,16 @@ package com.example.restaurant_management_app.service;
 import com.example.restaurant_management_app.model.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_management_app.repository.MenuItemInMemoryRepository;
+import com.example.restaurant_management_app.repository.MenuRepository;
 
 import java.util.List;
 
 @Service
 public class MenuItemService {
-    private final MenuItemInMemoryRepository menuItemRepository;
+    private final MenuRepository menuItemRepository;
 
     @Autowired
-    MenuItemService(MenuItemInMemoryRepository menuItemRepo){
+    MenuItemService(MenuRepository menuItemRepo){
         this.menuItemRepository = menuItemRepo;
     }
 

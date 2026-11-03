@@ -1,13 +1,12 @@
 package com.example.restaurant_management_app.repository;
 
-import com.example.restaurant_management_app.model.Staff;
+import com.example.restaurant_management_app.model.Bill;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class StaffInMemoryRepository extends InMemoryRepository<Staff>{
-
+public class BillRepository extends InMemoryRepository<Bill>{
     @Override
-    public String getId(Staff entity) {
+    public String getId(Bill entity) {
         return entity.getId();
     }
 }
