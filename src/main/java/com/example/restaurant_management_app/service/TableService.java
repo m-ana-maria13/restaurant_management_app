@@ -1,5 +1,7 @@
 package com.example.restaurant_management_app.service;
 
+import com.example.restaurant_management_app.model.Order;
+import com.example.restaurant_management_app.model.Staff;
 import com.example.restaurant_management_app.model.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +66,28 @@ public class TableService {
         if (table == null) {
             throw new IllegalArgumentException("Id not valid!");
         }
+        return table;
+    }
+
+    public Table deleteTable(String tableId){
+        if(tableId == null)
+            throw new IllegalArgumentException("Id null!");
+
+       Table table = tableRepository.findById(tableId);
+        if(table== null)
+            throw new IllegalArgumentException("Invalid id!");
+
+        tableRepository.delete(table);
+        return table;
+    }
+
+    public Table addNewTable(int number, List<Order> orders){
+        if(tableRepository.findByNumber(number) == null)
+            throw new IllegalArgumentException("Invalid table number!");
+
+        Table table = new Table(number,orders);
+        tableRepository.save(table);
+
         return table;
     }
 }

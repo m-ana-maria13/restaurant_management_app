@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.service;
 
+import com.example.restaurant_management_app.model.Customer;
 import com.example.restaurant_management_app.model.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,4 +60,17 @@ public class MenuItemService {
             throw new IllegalArgumentException("Invalid price!");
         }
     }
+
+    public MenuItem deleteMenuItem(String menuItmeId){
+        if(menuItmeId == null)
+            throw new IllegalArgumentException("Id null!");
+
+       MenuItem menuItem = menuItemRepository.findById(menuItmeId);
+        if(menuItem == null)
+            throw new IllegalArgumentException("Invalid id!");
+
+       menuItemRepository.delete(menuItem);
+        return menuItem;
+    }
+
 }

@@ -146,5 +146,17 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public Order deleteOrder(String orderId){
+        if(orderId == null)
+            throw new IllegalArgumentException("Id null!");
+
+        Order order = orderRepository.findById(orderId);
+        if(order == null)
+            throw new IllegalArgumentException("Invalid id!");
+
+        orderRepository.delete(order);
+        return order;
+    }
+
 
 }

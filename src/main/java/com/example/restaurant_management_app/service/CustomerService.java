@@ -1,6 +1,7 @@
 package com.example.restaurant_management_app.service;
 
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,19 @@ public class CustomerService {
     public List<Customer> getAllCustomers(){
         return customerRepository.findAll();
     }
+
+    public Customer deleteCustomer(String CustomerId){
+        if(CustomerId == null)
+            throw new IllegalArgumentException("Id null!");
+
+       Customer customer = customerRepository.findById(CustomerId);
+        if(customer == null)
+            throw new IllegalArgumentException("Invalid id!");
+
+       customerRepository.delete(customer);
+        return customer;
+    }
+
 
 
 }

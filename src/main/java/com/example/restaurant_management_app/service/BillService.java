@@ -83,4 +83,16 @@ public class BillService {
     public List<Bill> getAllBills(){
         return billRepository.findAll();
     }
+
+    public Bill deleteBill(String billId){
+        if(billId == null)
+            throw new IllegalArgumentException("Id null!");
+
+        Bill bill = billRepository.findById(billId);
+        if(bill == null)
+            throw new IllegalArgumentException("Invalid id!");
+
+        billRepository.delete(bill);
+        return bill;
+    }
 }

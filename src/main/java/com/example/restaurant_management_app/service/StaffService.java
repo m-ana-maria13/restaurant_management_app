@@ -1,6 +1,7 @@
 package com.example.restaurant_management_app.service;
 
 import com.example.restaurant_management_app.model.Chef;
+import com.example.restaurant_management_app.model.Order;
 import com.example.restaurant_management_app.model.Server;
 import com.example.restaurant_management_app.model.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +98,18 @@ public class StaffService {
         if (staff == null) {
             throw new IllegalArgumentException("Id not valid!");
         }
+        return staff;
+    }
+
+    public Staff deleteStaff(String staffId){
+        if(staffId == null)
+            throw new IllegalArgumentException("Id null!");
+
+        Staff staff = staffRepository.findById(staffId);
+        if(staff== null)
+            throw new IllegalArgumentException("Invalid id!");
+
+        staffRepository.delete(staff);
         return staff;
     }
 
