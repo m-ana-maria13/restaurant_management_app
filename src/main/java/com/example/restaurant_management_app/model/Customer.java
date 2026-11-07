@@ -52,11 +52,17 @@ public class Customer {
         return orders;
     }
 
-    public void setOrders(Order order) {
+
+    public void addOrders(Order order) {
         if(order==null){
             throw new IllegalArgumentException("Cannot find order!");
         }
         this.orders.add(order);
+    }
+
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public double getDiscount() {

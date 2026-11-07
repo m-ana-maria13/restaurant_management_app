@@ -23,6 +23,6 @@ public class TableRepository extends InMemoryRepository<Table> {
 
     public void assignOrder(String tableId, Order order){
         Table table= findById(tableId);
-        table.setOrders(order);
+        table.addOrders(order);
     }
 }
