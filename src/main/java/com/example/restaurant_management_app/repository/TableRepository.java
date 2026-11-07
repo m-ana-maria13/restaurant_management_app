@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.repository;
 
+import com.example.restaurant_management_app.model.Order;
 import com.example.restaurant_management_app.model.Table;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,10 @@ public class TableRepository extends InMemoryRepository<Table> {
             }
         }
         return null;
+    }
+
+    public void assignOrder(String tableId, Order order){
+        Table table= findById(tableId);
+        table.setOrders(order);
     }
 }

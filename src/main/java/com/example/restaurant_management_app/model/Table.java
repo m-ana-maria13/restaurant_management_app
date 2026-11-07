@@ -44,8 +44,8 @@ public class Table {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrders(Order order) {
+        this.orders.add(order);
     }
 
     public Status getOccupiedStatus() {
