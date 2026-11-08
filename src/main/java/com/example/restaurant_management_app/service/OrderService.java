@@ -54,7 +54,11 @@ public class OrderService {
         Order order= new Order(customerId,tableId,takeAway);
 
         customerRepository.assignOrder(customerId,order);
-        tableRepository.assignOrder(tableId,order);
+
+        if(!takeAway){
+            tableRepository.assignOrder(tableId,order);
+        }
+
 
         return orderRepository.save(order);
 

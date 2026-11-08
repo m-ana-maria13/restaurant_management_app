@@ -39,6 +39,7 @@ public class BillController {
         return "redirect:/bill";
     }
 
+
     @PostMapping("/{id}/delete")
     public String deleteBill(@PathVariable("id") String id){
             billService.deleteBill(id);
