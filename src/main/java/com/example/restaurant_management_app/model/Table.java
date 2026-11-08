@@ -18,7 +18,7 @@ public class Table {
         counter++;
         this.number = number;
         this.orders = orders;
-        this.occupiedStatus = Status.OCCUPIED;
+        this.occupiedStatus = Status.FREE;
     }
 
     public Table(){}
