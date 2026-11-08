@@ -15,7 +15,7 @@ public class TableService {
     private final TableRepository tableRepository;
 
     @Autowired
-    TableService(TableRepository tables){
+    public TableService(TableRepository tables){
         this.tableRepository = tables;
     }
 

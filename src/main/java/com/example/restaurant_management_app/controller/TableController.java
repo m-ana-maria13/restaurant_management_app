@@ -11,34 +11,43 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/table")
 public class TableController {
     public final TableService tableService;
 
     @Autowired
-    TableController(TableService service){
+    public TableController(TableService service){
         this.tableService = service;
     }
 
 
     @GetMapping
     public String getAllTables(Model model){
-        model.addAttribute("table", tableService.getAllTables()) ;
+        model.addAttribute("tables", tableService.getAllTables()) ;
         return "table/index";
     }
 
 
     @GetMapping("/new")
-    public String showForm(){
+    public String showForm(Model model){
+        model.addAttribute("table", new Table());
         return "table/form";
     }
 
 
     @PostMapping
-    public String createTable(@RequestParam int number, @RequestParam List<Order> orders){
-        tableService.addNewTable(number,orders);
+    public String createTable(Table table){
+        tableService.addNewTable(table.getNumber(),table.getOrders());
         return "redirect:/table";
     }
+
+
+    @PostMapping("/{id}/delete")
+    public String deleteTable(@PathVariable("id") String id){
+        tableService.deleteTable(id);
+        return "redirect:/table";
+    }
+
 
 }

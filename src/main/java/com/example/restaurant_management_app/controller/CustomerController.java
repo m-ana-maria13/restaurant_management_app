@@ -6,13 +6,11 @@ import com.example.restaurant_management_app.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
@@ -26,14 +24,27 @@ public class CustomerController {
 
     @GetMapping
     public String getAllCustomers(Model model){
-        model.addAttribute("customer",customerService.getAllCustomers()) ;
+        model.addAttribute("customers",customerService.getAllCustomers()) ;
         return "customer/index";
     }
 
 
     @GetMapping("/new")
-    public String showForm(){
-        return "costumer/form";
+    public String showForm(Model model){
+        model.addAttribute("customer",new Customer()) ;
+        return "customer/form";
     }
 
+    @PostMapping
+    public String saveCustomer(Customer customer){
+        customerService.registerCustomer(customer);
+        return "redirect:/customer";
+    }
+
+
+    @PostMapping("/{id}/delete")
+    public String deleteCustomer(@PathVariable("id") String id){
+        customerService.deleteCustomer(id);
+        return "redirect:/customer";
+    }
 }

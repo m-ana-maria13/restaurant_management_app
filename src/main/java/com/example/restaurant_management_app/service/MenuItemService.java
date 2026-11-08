@@ -13,7 +13,7 @@ public class MenuItemService {
     private final MenuRepository menuItemRepository;
 
     @Autowired
-    MenuItemService(MenuRepository menuItemRepo){
+    public MenuItemService(MenuRepository menuItemRepo){
         this.menuItemRepository = menuItemRepo;
     }
 

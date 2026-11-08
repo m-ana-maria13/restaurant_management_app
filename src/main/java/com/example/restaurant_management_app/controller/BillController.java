@@ -5,13 +5,11 @@ import com.example.restaurant_management_app.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/bill")
 public class BillController {
     private final BillService billService;
@@ -24,14 +22,27 @@ public class BillController {
 
     @GetMapping
     public String getAllBills(Model model){
-        model.addAttribute("bill", billService.getAllBills()) ;
+        model.addAttribute("bills", billService.getAllBills()) ;
         return "bill/index";
     }
 
 
     @GetMapping("/new")
-    public String showForm(){
+    public String showForm(Model model){
+        model.addAttribute("bill", new Bill()) ;
         return "bill/form";
+    }
+
+    @PostMapping
+    public String saveBill( Bill bill){
+        billService.generateBill(bill.getOrderId());
+        return "redirect:/bill";
+    }
+
+    @PostMapping("/{id}/delete")
+    public String deleteBill(@PathVariable("id") String id){
+            billService.deleteBill(id);
+        return "redirect:/bill";
     }
 
 

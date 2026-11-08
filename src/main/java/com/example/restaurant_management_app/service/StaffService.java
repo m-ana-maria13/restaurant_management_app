@@ -15,21 +15,10 @@ public class StaffService {
     private final StaffRepository staffRepository;
 
     @Autowired
-    StaffService(StaffRepository staffRepo) {
+    public StaffService(StaffRepository staffRepo) {
         this.staffRepository = staffRepo;
     }
 
-    public Chef addNewChef(String name, String specialization){
-        Chef chef= new Chef(name,specialization);
-         return (Chef) staffRepository.save(chef);
-
-    }
-
-    public Server addNewServer(String name, String designation ){
-        Server server= new Server(name, designation);
-        return (Server) staffRepository.save(server);
-
-    }
 
 
 
@@ -48,31 +37,8 @@ public class StaffService {
         return staffRepository.delete(staff);
     }
 
-    public Server changeDesignation(String id, String newDesignation) {
-        Staff staff = staffRepository.findById(id);
-
-        if (!(staff instanceof Server server)) {
-            throw new IllegalArgumentException("Staff " + id + " is not a server");
-        }
 
 
-        server.setDesignation(newDesignation);
-        staffRepository.save(server);
-        return server;
-    }
-
-
-    public Chef changeSpecialization(String id, String newSpecialization) {
-        Staff staff = staffRepository.findById(id);
-
-        if (!(staff instanceof Chef chef)) {
-            throw new IllegalArgumentException("Staff " + id + " is not a chef");
-        }
-
-        chef.setSpecialization(newSpecialization);
-        staffRepository.save(chef);
-        return chef;
-    }
 
 
     public Boolean isBusy(String id) {

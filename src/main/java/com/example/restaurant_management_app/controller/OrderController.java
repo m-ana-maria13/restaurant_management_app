@@ -17,27 +17,34 @@ public class OrderController {
     public final OrderService orderService;
 
     @Autowired
-    OrderController(OrderService service){
+    public OrderController(OrderService service) {
         this.orderService = service;
     }
-    
+
     @GetMapping
-    public String getAllOrders(Model model){
-        model.addAttribute("order",orderService.getAllOrders());
+    public String getAllOrders(Model model) {
+        model.addAttribute("orders", orderService.getAllOrders());
         return "order/index";
     }
 
 
     @GetMapping("/new")
-    public String showForm(){
+    public String showForm(Model model) {
+        model.addAttribute("order", new Order());
         return "order/form";
     }
 
-//
-//    @PostMapping
-//    public String createOrder(@RequestParam int number, @RequestParam List<Order> orders){
-//        orderService.addNewTable(number,orders);
-//        return "redirect:/order";
-//    }
+    @PostMapping
+    public String saveOrder(Order order){
+        orderService.createOrder(order.getCustomerId(),order.getTableId(), order.getTakeAway());
+        return "redirect:/order";
+    }
+
+
+    @PostMapping("/{id}/delete")
+    public String deleteOrder(@PathVariable("id") String id){
+            orderService.deleteOrder(id);
+        return "redirect:/order";
+    }
 
 }
