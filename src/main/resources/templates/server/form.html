@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Server</title>
+</head>
+<body>
+<h1>Add New Server</h1>
+
+<!-- th:object="${server}" conectează formularul la obiectul pasat din Controller -->
+<!-- th:action="@{/server}" trimite cererea POST către salvare -->
+<form th:action="@{/server}" th:object="${server}" method="post">
+    <div>
+        <label for="name">Name:</label><br>
+        <!-- th:field="*{name}" setează automat atributul "name" al obiectului Server -->
+        <input type="text" id="name" th:field="*{name}" required />
+    </div>
+    <br>
+
+    <div>
+        <label for="designation">Designation:</label><br>
+        <!-- th:field="*{designation}" setează atributul "designation" -->
+        <input type="text" id="designation" th:field="*{designation}" required />
+    </div>
+    <br>
+
+    <button type="submit">Save</button>
+    <a th:href="@{/server}">Cancel</a>
+</form>
+</body>
+</html>

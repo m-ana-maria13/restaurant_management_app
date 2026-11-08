@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Server List</title>
+</head>
+<body>
+<h1>Server List</h1>
+
+<!-- Buton/link către formularul de adăugare -->
+<p>
+    <a th:href="@{/server/new}">Add New Server</a>
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Designation</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterează prin colecția "servers" trimisă de ServerController -->
+    <tr th:each="item : ${servers}">
+        <td th:text="${item.id}">1</td>
+        <td th:text="${item.name}">John Doe</td>
+        <td th:text="${item.designation}">Waiter</td>
+        <td th:text="${item.status}">FREE</td>
+        <td>
+            <!-- Formular POST pentru ștergere -->
+            <form th:action="@{'/server/' + ${item.id} + '/delete'}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
