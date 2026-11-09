@@ -82,10 +82,10 @@ public class TableService {
     }
 
     public Table addNewTable(int number, List<Order> orders){
-        if(tableRepository.findByNumber(number) == null)
-            throw new IllegalArgumentException("Invalid table number!");
+        if(tableRepository.findByNumber(number) != null)
+            throw new IllegalArgumentException("Table number already exists!");
 
-        Table table = new Table(number,orders);
+        Table table = new Table(number, orders);
         tableRepository.save(table);
 
         return table;

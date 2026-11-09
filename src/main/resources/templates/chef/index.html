@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chef List</title>
+</head>
+<body>
+<h1>Chef List</h1>
+
+<!-- Buton/link către formularul de adăugare -->
+<p>
+    <a th:href="@{/chef/new}">Add New Chef</a>
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specialization</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterează prin colecția "chefs" trimisă de ChefController -->
+    <tr th:each="item : ${chefs}">
+        <td th:text="${item.id}">1</td>
+        <td th:text="${item.name}">John Doe</td>
+        <td th:text="${item.specialization}">Pastry</td>
+        <td th:text="${item.status}">FREE</td>
+        <td>
+            <!-- Formular POST pentru ștergere -->
+            <form th:action="@{'/chef/' + ${item.id} + '/delete'}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

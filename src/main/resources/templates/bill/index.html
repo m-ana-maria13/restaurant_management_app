@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill List</title>
+</head>
+<body>
+<h1>Bill List</h1>
+
+<!-- Buton/link către formularul de generare -->
+<p>
+    <a th:href="@{/bill/new}">Generate New Bill</a>
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Order ID</th>
+        <th>Total Amount</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterează prin colecția "bills" trimisă de BillController -->
+    <tr th:each="item : ${bills}">
+        <td th:text="${item.id}">1</td>
+        <td th:text="${item.orderId}">1</td>
+        <td th:text="${item.totalAmount}">0.0</td>
+        <td>
+            <!-- Formular POST pentru ștergere -->
+            <form th:action="@{'/bill/' + ${item.id} + '/delete'}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

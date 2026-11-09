@@ -33,16 +33,15 @@ public class ChefController {
         return "chef/form";
     }
 
-    @PostMapping("/{id}/delete")
+    @PostMapping
     public String saveChef(Chef chef){
-        chefService.saveChef(chef.getName(),chef.getSpecialization());
+        chefService.saveChef(chef.getName(), chef.getSpecialization());
         return "redirect:/chef";
     }
 
-
-    @PostMapping
+    @PostMapping("/{id}/delete")
     public String deleteChef(@PathVariable("id") String id){
-       chefService.deleteChef(id);
+        chefService.deleteChef(id);
         return "redirect:/chef";
     }
 

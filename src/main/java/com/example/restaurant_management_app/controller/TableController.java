@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -38,7 +39,7 @@ public class TableController {
 
     @PostMapping
     public String createTable(Table table){
-        tableService.addNewTable(table.getNumber(),table.getOrders());
+        tableService.addNewTable(table.getNumber(), new ArrayList<>());
         return "redirect:/table";
     }
 

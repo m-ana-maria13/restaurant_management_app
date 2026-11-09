@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Table</title>
+</head>
+<body>
+<h1>Add New Table</h1>
+
+<!-- th:object="${table}" conectează formularul la obiectul pasat din Controller -->
+<!-- th:action="@{/table}" trimite cererea POST către salvare -->
+<form th:action="@{/table}" th:object="${table}" method="post">
+    <div>
+        <label for="number">Table Number:</label><br>
+        <!-- th:field="*{number}" setează atributul "number" al obiectului Table -->
+        <input type="number" id="number" th:field="*{number}" min="1" required />
+    </div>
+    <br>
+
+    <button type="submit">Save</button>
+    <a th:href="@{/table}">Cancel</a>
+</form>
+</body>
+</html>

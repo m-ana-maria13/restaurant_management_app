@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Bill</title>
+</head>
+<body>
+<h1>Generate New Bill</h1>
+
+<!-- th:object="${bill}" conectează formularul la obiectul pasat din Controller -->
+<!-- th:action="@{/bill}" trimite cererea POST către generarea facturii -->
+<form th:action="@{/bill}" th:object="${bill}" method="post">
+    <div>
+        <label for="orderId">Order ID:</label><br>
+        <!-- th:field="*{orderId}" setează automat atributul "orderId" al obiectului Bill -->
+        <input type="text" id="orderId" th:field="*{orderId}" required />
+    </div>
+    <br>
+
+    <button type="submit">Generate</button>
+    <a th:href="@{/bill}">Cancel</a>
+</form>
+</body>
+</html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -37,7 +38,8 @@ public class CustomerController {
 
     @PostMapping
     public String saveCustomer(Customer customer){
-        customerService.registerCustomer(customer);
+        Customer newCustomer = new Customer(customer.getName(), new ArrayList<>(), customer.getDiscount());
+        customerService.registerCustomer(newCustomer);
         return "redirect:/customer";
     }
 

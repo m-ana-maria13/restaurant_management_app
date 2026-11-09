@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Order</title>
+</head>
+<body>
+<h1>Add New Order</h1>
+
+<!-- th:object="${order}" conectează formularul la obiectul pasat din Controller -->
+<!-- th:action="@{/order}" trimite cererea POST către salvare -->
+<form th:action="@{/order}" th:object="${order}" method="post">
+    <div>
+        <label for="customerId">Customer ID:</label><br>
+        <!-- th:field="*{customerId}" setează atributul "customerId" al obiectului Order -->
+        <input type="text" id="customerId" th:field="*{customerId}" required />
+    </div>
+    <br>
+
+    <div>
+        <label for="tableId">Table ID (leave empty for take away):</label><br>
+        <!-- th:field="*{tableId}" setează atributul "tableId"; ignorat dacă e take away -->
+        <input type="text" id="tableId" th:field="*{tableId}" />
+    </div>
+    <br>
+
+    <div>
+        <label for="takeAway">Take Away:</label>
+        <!-- th:field pe checkbox generează automat și un câmp hidden, deci bifat = true, nebifat = false -->
+        <input type="checkbox" id="takeAway" th:field="*{takeAway}" />
+    </div>
+    <br>
+
+    <button type="submit">Save</button>
+    <a th:href="@{/order}">Cancel</a>
+</form>
+</body>
+</html>

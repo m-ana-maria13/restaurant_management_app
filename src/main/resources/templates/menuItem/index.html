@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Item List</title>
+</head>
+<body>
+<h1>Menu Item List</h1>
+
+<!-- Buton/link către formularul de adăugare -->
+<p>
+    <a th:href="@{/menuItem/new}">Add New Menu Item</a>
+</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterează prin colecția "menuItems" trimisă de MenuItemController -->
+    <tr th:each="item : ${menuItems}">
+        <td th:text="${item.id}">1</td>
+        <td th:text="${item.name}">Pizza</td>
+        <td th:text="${item.price}">0.0</td>
+        <td>
+            <!-- Formular POST pentru ștergere -->
+            <form th:action="@{'/menuItem/' + ${item.id} + '/delete'}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
