@@ -55,10 +55,8 @@ public class OrderService {
 
         customerRepository.assignOrder(customerId,order);
 
-        if(!takeAway){
+        if(!takeAway)
             tableRepository.assignOrder(tableId,order);
-        }
-
 
         return orderRepository.save(order);
 
@@ -130,6 +128,7 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
+
     public Order closeOrder(String orderId){
         Order order= orderRepository.findById(orderId);
         if(order==null){
@@ -167,6 +166,7 @@ public class OrderService {
             throw new IllegalArgumentException("Invalid id!");
 
         orderRepository.delete(order);
+
         return order;
     }
 

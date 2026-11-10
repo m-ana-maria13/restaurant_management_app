@@ -18,16 +18,18 @@ public class BillService {
     private final CustomerRepository customerRepository;
     private final MenuRepository menuItemRepository;
     private final TableService tableService;
-
+    private final OrderService orderService;
     @Autowired
     public BillService(BillRepository billRepository, OrderRepository orderRepository,
                        CustomerRepository customerRepository,
-                       MenuRepository menuItemRepository, TableService tableService) {
+                       MenuRepository menuItemRepository, TableService tableService,
+                        OrderService orderService) {
         this.billRepository = billRepository;
         this.orderRepository = orderRepository;
         this.customerRepository = customerRepository;
         this.menuItemRepository = menuItemRepository;
         this.tableService=tableService;
+        this.orderService=orderService;
     }
 
 
@@ -63,17 +65,8 @@ public class BillService {
         if(orderId==null){
             throw new IllegalArgumentException("OrderId null!");
         }
-        Order order= orderRepository.findById(orderId);
-        if(order==null){
-            throw new IllegalArgumentException("Order null!");
-        }
-        order.setStatus(Order.Status.CLOSED);
-        orderRepository.save(order);
+       return orderService.closeOrder(orderId);
 
-        if(!order.getTakeAway() && order.getTableId()!=null){
-            tableService.releaseTable(order.getTableId());
-        }
-        return order;
     }
 
     public Bill getBillById(String id){
