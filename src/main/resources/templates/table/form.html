@@ -17,6 +17,12 @@
     </div>
     <br>
 
+    <div>
+        <label for="numberPeople">Number of People:</label><br>
+        <input type="number" id="numberPeople" th:field="*{numberPeople}" min="1" required />
+    </div>
+    <br>
+
     <button type="submit">Save</button>
     <a th:href="@{/table}">Cancel</a>
 </form>

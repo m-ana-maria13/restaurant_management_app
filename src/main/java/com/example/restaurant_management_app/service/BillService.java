@@ -68,6 +68,8 @@ public class BillService {
        return orderService.closeOrder(orderId);
 
     }
+//cand generazi un bill sa se inchida si order cu verificare, Daca order e deja inchis sa apara un pop up.
+
 
     public Bill getBillById(String id){
         return billRepository.findById(id);

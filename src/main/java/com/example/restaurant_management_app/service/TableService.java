@@ -81,11 +81,11 @@ public class TableService {
         return table;
     }
 
-    public Table addNewTable(int number, List<Order> orders){
+    public Table addNewTable(int number, List<Order> orders, int nrPeople){
         if(tableRepository.findByNumber(number) != null)
             throw new IllegalArgumentException("Table number already exists!");
 
-        Table table = new Table(number, orders);
+        Table table = new Table(number, orders, nrPeople);
         tableRepository.save(table);
 
         return table;

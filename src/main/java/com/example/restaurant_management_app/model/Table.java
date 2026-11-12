@@ -12,13 +12,23 @@ public class Table {
     private int number;
     private List<Order> orders;
     private Status occupiedStatus;
+    private int numberPeople;
 
-    public Table(int number, List<Order> orders) {
+    public Table(int number, List<Order> orders, int nrPeople) {
         this.id = String.valueOf(counter);
         counter++;
         this.number = number;
         this.orders = orders;
         this.occupiedStatus = Status.FREE;
+        this.numberPeople = nrPeople;
+    }
+
+    public int getNumberPeople() {
+        return numberPeople;
+    }
+
+    public void setNumberPeople(int numberPeople) {
+        this.numberPeople = numberPeople;
     }
 
     public Table(){}
