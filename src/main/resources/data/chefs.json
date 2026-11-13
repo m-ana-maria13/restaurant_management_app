@@ -1,0 +1,60 @@
+[
+  {"id":"1",
+    "name":"Robert Smith",
+    "status":"BUSY",
+    "specialization":"Italian cuisine"},
+
+
+  {"id":"2",
+    "name":"Daniel Brown",
+    "status":"FREE",
+    "specialization":"French cuisine"},
+
+
+  {"id":"3",
+    "name":"Michael Wilson",
+    "status":"BUSY",
+    "specialization":"Asian cuisine"},
+
+
+  {"id":"4",
+    "name":"James Taylor",
+    "status":"FREE",
+    "specialization":"Grill"},
+
+
+  {"id":"5",
+    "name":"Thomas Miller",
+    "status":"BUSY",
+    "specialization":"Pastry"},
+
+
+  {"id":"6",
+    "name":"William Davis",
+    "status":"FREE",
+    "specialization":"Mediterranean cuisine"},
+
+
+  {"id":"7",
+    "name":"Oliver Martin",
+    "status":"BUSY",
+    "specialization":"Seafood"},
+
+
+  {"id":"8",
+    "name":"Henry Clark",
+    "status":"FREE",
+    "specialization":"Vegan cuisine"},
+
+
+  {"id":"9",
+    "name":"Benjamin Lewis",
+    "status":"BUSY",
+    "specialization":"Traditional cuisine"},
+
+
+  {"id":"10",
+    "name":"Lucas Walker",
+    "status":"FREE",
+    "specialization":"Desserts"}
+]

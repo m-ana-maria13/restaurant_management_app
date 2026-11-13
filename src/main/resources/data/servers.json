@@ -1,0 +1,60 @@
+[
+  {"id":"11",
+    "name":"Emma Johnson",
+    "status":"BUSY",
+    "designation":"Senior Server"},
+
+
+  {"id":"12",
+    "name":"Olivia White",
+    "status":"FREE",
+    "designation":"Junior Server"},
+
+
+  {"id":"13",
+    "name":"Sophia Harris",
+    "status":"BUSY",
+    "designation":"Head Waiter"},
+
+
+  {"id":"14",
+    "name":"Isabella Moore",
+    "status":"FREE",
+    "designation":"Waiter"},
+
+
+  {"id":"15",
+    "name":"Mia Anderson",
+    "status":"BUSY",
+    "designation":"Senior Waiter"},
+
+
+  {"id":"16",
+    "name":"Charlotte Thomas",
+    "status":"FREE",
+    "designation":"Waiter"},
+
+
+  {"id":"17",
+    "name":"Amelia Jackson",
+    "status":"BUSY",
+    "designation":"Junior Server"},
+
+
+  {"id":"18",
+    "name":"Evelyn Martin",
+    "status":"FREE",
+    "designation":"Head Waiter"},
+
+
+  {"id":"19",
+    "name":"Harper Thompson",
+    "status":"BUSY",
+    "designation":"Waiter"},
+
+
+  {"id":"20",
+    "name":"Emily Garcia",
+    "status":"FREE",
+    "designation":"Senior Server"}
+]
