@@ -1,0 +1,55 @@
+[
+  {"id":"1",
+    "name":"Andrei Popescu",
+    "orders":[{"id":"1"},{"id":"2"}],
+    "discount":10.0},
+
+
+  {"id":"2",
+    "name":"Maria Ionescu",
+    "orders":[{"id":"3"}],
+    "discount":5.0},
+
+
+  {"id":"3",
+    "name":"Alex Marin",
+    "orders":[{"id":"4"}],
+    "discount":0.0},
+
+  {"id":"4",
+    "name":"Elena Dumitru",
+    "orders":[{"id":"5"},{"id":"6"}],
+    "discount":15.0},
+
+
+  {"id":"5",
+    "name":"David Radu",
+    "orders":[{"id":"7"}],
+    "discount":20.0},
+
+  {"id":"6",
+    "name":"Ioana Stan",
+    "orders":[{"id":"8"}],
+    "discount":7.5},
+  {"id":"7",
+    "name":"Mihai Pavel",
+    "orders":[{"id":"9"}],
+    "discount":0.0},
+
+  {"id":"8",
+    "name":"Ana Munteanu",
+    "orders":[{"id":"10"}],
+    "discount":12.0},
+
+
+  {"id":"9",
+    "name":"Vlad Enache",
+    "orders":[{"id":"1"},{"id":"5"}],
+    "discount":5.0},
+
+
+  {"id":"10",
+    "name":"Sofia Matei",
+    "orders":[{"id":"2"},{"id":"6"}],
+    "discount":25.0}
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "name": "Ciorbă de burtă",
+    "price": 22.00
+  },
+  {
+    "id": "2",
+    "name": "Salată Caesar",
+    "price": 29.50
+  },
+  {
+    "id": "3",
+    "name": "Paste Carbonara",
+    "price": 34.00
+  },
+  {
+    "id": "4",
+    "name": "Burger de vită",
+    "price": 42.00
+  },
+  {
+    "id": "5",
+    "name": "Piept de pui la grătar",
+    "price": 38.50
+  },
+  {
+    "id": "6",
+    "name": "Somon cu legume",
+    "price": 56.00
+  },
+  {
+    "id": "7",
+    "name": "Papanași cu smântână",
+    "price": 24.00
+  },
+  {
+    "id": "8",
+    "name": "Tiramisu",
+    "price": 21.00
+  },
+  {
+    "id": "9",
+    "name": "Limonadă de casă",
+    "price": 14.00
+  },
+  {
+    "id": "10",
+    "name": "Cafea espresso",
+    "price": 10.00
+  }
+]
