@@ -1,10 +1,15 @@
 package com.example.restaurant_management_app.repository;
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.MenuItem;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class MenuRepository extends InMemoryRepository<MenuItem>{
+public class MenuRepository extends InFileRepository<MenuItem>{
+    public MenuRepository() {
+        super("src/main/resources/data/menus.json", MenuItem.class);
+    }
+
     @Override
     public String getId(MenuItem entity) {
         return entity.getId();

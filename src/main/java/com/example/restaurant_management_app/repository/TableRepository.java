@@ -1,28 +1,34 @@
 package com.example.restaurant_management_app.repository;
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Order;
 import com.example.restaurant_management_app.model.Table;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TableRepository extends InMemoryRepository<Table> {
+public class TableRepository extends InFileRepository<Table> {
+
+    public TableRepository() {
+        super("src/main/resources/data/tables.json", Table.class);
+    }
 
     @Override
     public String getId(Table entity) {
         return entity.getId();
     }
 
-    public Table findByNumber(int number){
-        for (Table table : entities) { // daca entities era private nu aveam acces
-            if (number == table.getNumber()) {
-                return table;
-            }
-        }
-        return null;
-    }
-
-    public void assignOrder(String tableId, Order order){
-        Table table= findById(tableId);
-        table.addOrders(order);
-    }
+//
+//    public Table findByNumber(int number){
+//        for (Table table : entities) { // daca entities era private nu aveam acces
+//            if (number == table.getNumber()) {
+//                return table;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    public void assignOrder(String tableId, Order order){
+//        Table table= findById(tableId);
+//        table.addOrders(order);
+//    }
 }
