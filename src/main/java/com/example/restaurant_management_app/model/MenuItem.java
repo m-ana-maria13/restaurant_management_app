@@ -1,15 +1,19 @@
 package com.example.restaurant_management_app.model;
 
+import java.util.UUID;
+
 public class MenuItem {
 
-    private static int counter=1;
+    //private static int counter=1;
     private String id;
     private String name;
     private double price;
 
     public MenuItem( String name, double price) {
-        this.id = String.valueOf(counter);
-        counter++;
+       // this.id = String.valueOf(counter);
+       // counter++;
+        this.id= UUID.randomUUID().toString();
+
         this.name = name;
         this.price = price;
     }

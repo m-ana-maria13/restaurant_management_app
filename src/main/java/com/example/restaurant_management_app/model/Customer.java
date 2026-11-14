@@ -1,6 +1,8 @@
 package com.example.restaurant_management_app.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Customer {
 
@@ -13,19 +15,22 @@ public class Customer {
 
     public Customer(String name, List<Order> orders) {
         this.id = String.valueOf(counter);
-        counter++;
+      //  counter++;
         this.name = name;
         this.orders = orders;
         this.discount=0.0;
 
     }
 
-    public Customer(){}
+    public Customer(){
+        this.orders= new ArrayList<>();
+    }
 
 
     public Customer(String name, List<Order> orders, double discount) {
-        this.id = String.valueOf(counter);
-        counter++;
+       // this.id = String.valueOf(counter);
+       // counter++;
+        this.id= UUID.randomUUID().toString();
         this.name = name;
         this.orders = orders;
         this.discount=discount; //procente, pana in 70 la suta
@@ -56,6 +61,9 @@ public class Customer {
     public void addOrders(Order order) {
         if(order==null){
             throw new IllegalArgumentException("Cannot find order!");
+        }
+        if(this.orders==null){
+            this.orders=new ArrayList<>();
         }
         this.orders.add(order);
     }

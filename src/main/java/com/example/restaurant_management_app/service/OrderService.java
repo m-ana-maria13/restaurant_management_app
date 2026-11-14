@@ -53,11 +53,17 @@ public class OrderService {
 
         Order order= new Order(customerId,tableId,takeAway);
 
-        customerRepository.assignOrder(customerId,order);
+        //customerRepository.assignOrder(customerId,order);
+        Customer customer= customerRepository.findById(customerId);
+        customer.addOrders(order);
+        customerRepository.save(customer);
 
-        if(!takeAway)
-            tableRepository.assignOrder(tableId,order);
-
+        if(!takeAway) {
+            //tableRepository.assignOrder(tableId, order);
+            Table table= tableRepository.findById(tableId);
+            table.addOrders(order);
+            tableRepository.save(table);
+        }
         return orderRepository.save(order);
 
     }

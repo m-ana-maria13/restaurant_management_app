@@ -2,13 +2,14 @@ package com.example.restaurant_management_app.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-    public class Order {
+public class Order {
 
         public enum Status{
             OPEN, CLOSED
         }
-        private static int counter=1;
+       // private static int counter=1;
         private String id;
         private String customerId;
         private String tableId;
@@ -18,8 +19,9 @@ import java.util.List;
         private Boolean takeAway; // daca e takeaway, atunci nu se mai ocupa masa, ! nu se face delivery, vine clientul
 
         public Order(String customerId, String tableId, boolean takeAway) {
-            this.id = String.valueOf(counter);
-            counter++;
+          //  this.id = String.valueOf(counter);
+           // counter++;
+            this.id= UUID.randomUUID().toString();
             this.customerId = customerId;
             this.tableId = tableId;
             this.status = Status.OPEN;
@@ -29,7 +31,10 @@ import java.util.List;
 
         }
 
-        public Order(){}
+        public Order(){
+            this.orderLines = new ArrayList<>();
+            this.assignments = new ArrayList<>();
+        }
 
         public String getId() {
             return id;
