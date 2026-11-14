@@ -75,8 +75,8 @@
     "tableId":"5",
     "status":"OPEN",
     "orderLines":[
-      {"id":"11","menuItemId":"11","quantity":2},
-      {"id":"12","menuItemId":"12","quantity":1}
+      {"id":"11","menuItemId":"3","quantity":2},
+      {"id":"12","menuItemId":"6","quantity":1}
     ],
     "assignments":[
       {"id":"6","orderId":"6","staffId":"16"}
@@ -89,8 +89,8 @@
     "tableId":"6",
     "status":"CLOSED",
     "orderLines":[
-      {"id":"13","menuItemId":"13","quantity":1},
-      {"id":"14","menuItemId":"14","quantity":3}
+      {"id":"13","menuItemId":"10","quantity":1},
+      {"id":"14","menuItemId":"8","quantity":3}
     ],
     "assignments":[
       {"id":"7","orderId":"7","staffId":"17"}
@@ -103,8 +103,8 @@
     "tableId":null,
     "status":"OPEN",
     "orderLines":[
-      {"id":"15","menuItemId":"15","quantity":2},
-      {"id":"16","menuItemId":"16","quantity":1}
+      {"id":"15","menuItemId":"9","quantity":2},
+      {"id":"16","menuItemId":"5","quantity":1}
     ],
     "assignments":[
       {"id":"8","orderId":"8","staffId":"18"}
@@ -117,8 +117,8 @@
     "tableId":"7",
     "status":"CLOSED",
     "orderLines":[
-      {"id":"17","menuItemId":"17","quantity":1},
-      {"id":"18","menuItemId":"18","quantity":2}
+      {"id":"17","menuItemId":"1","quantity":1},
+      {"id":"18","menuItemId":"5","quantity":2}
     ],
     "assignments":[
       {"id":"9","orderId":"9","staffId":"19"}
@@ -131,8 +131,8 @@
     "tableId":"8",
     "status":"OPEN",
     "orderLines":[
-      {"id":"19","menuItemId":"19","quantity":2},
-      {"id":"20","menuItemId":"20","quantity":1}
+      {"id":"19","menuItemId":"7","quantity":2},
+      {"id":"20","menuItemId":"4","quantity":1}
     ],
     "assignments":[
       {"id":"10","orderId":"10","staffId":"20"}

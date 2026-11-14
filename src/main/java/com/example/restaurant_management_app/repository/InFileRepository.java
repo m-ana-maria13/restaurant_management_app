@@ -19,7 +19,7 @@ public abstract class InFileRepository<T> implements IRepository<T>{
         this.objectMapper = new ObjectMapper();
     }
 
-    private List<T> readFromFile(){
+    protected List<T> readFromFile(){
         File file=  new File(filePath);
         if( !file.exists() || file.length()==0){
             return new ArrayList<>();

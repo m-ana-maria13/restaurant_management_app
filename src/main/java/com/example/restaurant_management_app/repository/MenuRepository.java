@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MenuRepository extends InFileRepository<MenuItem>{
     public MenuRepository() {
-        super("src/main/resources/data/menus.json", MenuItem.class);
+        super("src/main/resources/data/menu-items.json", MenuItem.class);
     }
 
     @Override
