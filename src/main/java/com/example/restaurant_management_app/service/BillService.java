@@ -90,4 +90,9 @@ public class BillService {
         billRepository.delete(bill);
         return bill;
     }
+
+    public Bill update(Bill bill){
+        billRepository.save(bill);
+        return bill;
+    }
 }

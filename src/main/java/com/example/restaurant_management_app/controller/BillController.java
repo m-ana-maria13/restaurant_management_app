@@ -46,5 +46,30 @@ public class BillController {
         return "redirect:/bill";
     }
 
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable String id, Model model) {
+        Bill bill = billService.getBillById(id);
+
+        model.addAttribute("bill", bill);
+
+        return "bill/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Bill bill = billService.getBillById(id);
+
+        model.addAttribute("bill", bill);
+
+        return "bill/form";
+    }
+
+    @PostMapping("/edit")
+    public String updateBill(@ModelAttribute Bill bill) {
+        billService.update(bill);
+
+        return "redirect:/bills";
+    }
+
 
 }

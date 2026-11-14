@@ -1,9 +1,6 @@
 package com.example.restaurant_management_app.service;
 
-import com.example.restaurant_management_app.model.Chef;
-import com.example.restaurant_management_app.model.Order;
-import com.example.restaurant_management_app.model.Server;
-import com.example.restaurant_management_app.model.Staff;
+import com.example.restaurant_management_app.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.restaurant_management_app.repository.StaffRepository;
@@ -76,6 +73,12 @@ public class StaffService {
             throw new IllegalArgumentException("Invalid id!");
 
         staffRepository.delete(staff);
+        return staff;
+    }
+
+
+    public Staff update(Staff staff){
+        staffRepository.save(staff);
         return staff;
     }
 

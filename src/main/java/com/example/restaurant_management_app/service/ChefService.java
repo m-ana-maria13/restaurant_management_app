@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.service;
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Chef;
 import com.example.restaurant_management_app.repository.ChefRepository;
 import org.springframework.stereotype.Service;
@@ -82,6 +83,11 @@ public class ChefService {
             throw new IllegalArgumentException("Invalid id!");
 
         chefRepository.delete(chef);
+        return chef;
+    }
+
+    public Chef update(Chef chef){
+        chefRepository.save(chef);
         return chef;
     }
 

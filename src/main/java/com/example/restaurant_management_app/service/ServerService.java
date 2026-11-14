@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.service;
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Chef;
 import com.example.restaurant_management_app.model.Server;
 import com.example.restaurant_management_app.model.Staff;
@@ -85,6 +86,11 @@ public class ServerService {
             throw new IllegalArgumentException("Invalid id!");
 
         serverRepository.delete(server);
+        return server;
+    }
+
+    public Server update(Server server){
+        serverRepository.save(server);
         return server;
     }
 

@@ -69,6 +69,9 @@ public class CustomerService {
         return customer;
     }
 
-
+    public Customer update(Customer customer){
+        customerRepository.save(customer);
+        return customer;
+    }
 
 }

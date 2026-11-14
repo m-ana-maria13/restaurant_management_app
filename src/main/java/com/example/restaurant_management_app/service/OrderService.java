@@ -176,5 +176,9 @@ public class OrderService {
         return order;
     }
 
+    public Order update(Order order){
+        orderRepository.save(order);
+        return order;
+    }
 
 }

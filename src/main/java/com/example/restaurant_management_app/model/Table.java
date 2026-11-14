@@ -11,16 +11,14 @@ public class Table {
     }
    // private static int counter=1;
     private String id;
-    private int number;
     private List<Order> orders;
     private Status occupiedStatus;
     private int numberPeople;
 
-    public Table(int number, List<Order> orders, int nrPeople) {
+    public Table( List<Order> orders, int nrPeople) {
      //   this.id = String.valueOf(counter);
      //   counter++;
         this.id= UUID.randomUUID().toString();
-        this.number = number;
         this.orders = orders;
         this.occupiedStatus = Status.FREE;
         this.numberPeople = nrPeople;
@@ -64,14 +62,6 @@ public class Table {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public List<Order> getOrders() {

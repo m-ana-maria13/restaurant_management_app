@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.service;
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Order;
 import com.example.restaurant_management_app.model.Staff;
 import com.example.restaurant_management_app.model.Table;
@@ -35,10 +36,6 @@ public class TableService {
 
         table.setOccupiedStatus(Table.Status.FREE);
         return tableRepository.save(table);
-    }
-
-    public Table getTableByNumber(int number) {
-        return tableRepository.findByNumber(number);
     }
 
     public Table getTableById(String id){
@@ -81,13 +78,18 @@ public class TableService {
         return table;
     }
 
-    public Table addNewTable(int number, List<Order> orders, int nrPeople){
-        if(tableRepository.findByNumber(number) != null)
+    public Table addNewTable(String id, List<Order> orders, int nrPeople){
+        if(tableRepository.findById(id) != null)
             throw new IllegalArgumentException("Table number already exists!");
 
-        Table table = new Table(number, orders, nrPeople);
+        Table table = new Table(orders, nrPeople);
         tableRepository.save(table);
 
+        return table;
+    }
+
+    public Table update(Table table){
+        tableRepository.save(table);
         return table;
     }
 }

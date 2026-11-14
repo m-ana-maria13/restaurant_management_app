@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.service;
 
+import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Customer;
 import com.example.restaurant_management_app.model.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,11 @@ public class MenuItemService {
             throw new IllegalArgumentException("Invalid id!");
 
        menuItemRepository.delete(menuItem);
+        return menuItem;
+    }
+
+    public MenuItem update(MenuItem menuItem){
+        menuItemRepository.save(menuItem);
         return menuItem;
     }
 
