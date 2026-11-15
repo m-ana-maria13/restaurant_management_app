@@ -78,9 +78,7 @@ public class TableService {
         return table;
     }
 
-    public Table addNewTable(String id, List<Order> orders, int nrPeople){
-        if(tableRepository.findById(id) != null)
-            throw new IllegalArgumentException("Table number already exists!");
+    public Table addNewTable(List<Order> orders, int nrPeople){
 
         Table table = new Table(orders, nrPeople);
         tableRepository.save(table);
