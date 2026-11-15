@@ -41,6 +41,10 @@
             <form th:action="@{/bill/{id}/delete(id=${item.id})}" method="post">
                 <button type="submit">Delete</button>
             </form>
+
+            <form th:action="@{/bill/{id}/pay(id=${item.orderId})}" method="post">
+                <button type="submit">Pay Bill</button>
+            </form>
         </td>
     </tr>
     </tbody>

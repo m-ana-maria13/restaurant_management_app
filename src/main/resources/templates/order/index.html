@@ -20,6 +20,7 @@
         <th>Customer ID</th>
         <th>Table ID</th>
         <th>Take Away</th>
+        <th>Status</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -30,6 +31,8 @@
         <td th:text="${item.customerId}"></td>
         <td th:text="${item.tableId}"></td>
         <td th:text="${item.takeAway}"></td>
+        <td th:text="${item.status}"></td>
+
 
         <td>
             <form th:action="@{/order/details/{id}(id=${item.id})}" method="get">

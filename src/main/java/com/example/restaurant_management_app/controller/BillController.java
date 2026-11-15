@@ -71,5 +71,10 @@ public class BillController {
         return "redirect:/bill";
     }
 
+    @PostMapping("/{id}/pay")
+    public String payBill(@PathVariable("id") String orderId){
+        billService.payBill(orderId);
+        return "redirect:/bill";
+    }
 
 }

@@ -61,6 +61,7 @@ public class BillService {
     }
 
 
+
     public Order payBill(String orderId){
         if(orderId==null){
             throw new IllegalArgumentException("OrderId null!");
@@ -69,7 +70,7 @@ public class BillService {
        return orderService.closeOrder(orderId);
 
     }
-//cand generazi un bill sa se inchida si order cu verificare, Daca order e deja inchis sa apara un pop up.
+//cand generazi un bill sa se inchida si order cu verificare, Daca order e deja inchis sa apara un pop up. (in close order facut)
 
 
     public Bill getBillById(String id){
@@ -93,6 +94,25 @@ public class BillService {
     }
 
     public Bill update(Bill bill){
+        Order orderVerify= orderRepository.findById(bill.getOrderId());
+        if(orderVerify.getStatus() == Order.Status.CLOSED){
+            throw new IllegalArgumentException("Cannot assign bill to a closed Order ");
+        }
+
+        for(Bill oneBill : billRepository.findAll()){
+            if(oneBill.getOrderId().equals(bill.getOrderId())){
+                throw new IllegalArgumentException("Cannot assign the bill to an order that's already assigned to another bill!");
+            }
+        }
+
+        for(Order order: orderRepository.findAll()){
+            if(order.getId().equals(bill.getOrderId()) && order.getStatus()!= Order.Status.CLOSED){
+                Bill temporaryBill= generateBill(order.getId());
+                bill.setTotalAmount(temporaryBill.getTotalAmount());
+                deleteBill(temporaryBill.getId());
+            }
+        }
+
         billRepository.save(bill);
         return bill;
     }
