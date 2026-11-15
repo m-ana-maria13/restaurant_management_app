@@ -1,31 +1,40 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Customer</title>
+    <title>Customer Form</title>
 </head>
 <body>
-<h1>Add New Customer</h1>
 
-<!-- th:object="${customer}" conectează formularul la obiectul pasat din Controller -->
-<!-- th:action="@{/customer}" trimite cererea POST către salvare -->
-<form th:action="@{/customer}" th:object="${customer}" method="post">
+<h1 th:text="${customer.id == null ? 'Register New Customer' : 'Edit Customer'}"></h1>
+
+<form th:action="${customer.id == null ? '/customer' : '/customer/edit'}"
+      th:object="${customer}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
     <div>
         <label for="name">Name:</label><br>
-        <!-- th:field="*{name}" setează automat atributul "name" al obiectului Customer -->
-        <input type="text" id="name" th:field="*{name}" required />
+        <input type="text" id="name" th:field="*{name}" required>
     </div>
+
     <br>
 
     <div>
-        <label for="discount">Discount (%):</label><br>
-        <!-- th:field="*{discount}" setează atributul "discount"; validat între 0 și 70 în CustomerService -->
-        <input type="number" id="discount" th:field="*{discount}" min="0" max="70" step="0.01" required />
+        <label for="discount">Discount:</label><br>
+        <input type="number" id="discount" th:field="*{discount}" step="0.01" required>
     </div>
+
     <br>
 
-    <button type="submit">Save</button>
+    <button type="submit"
+            th:text="${customer.id == null ? 'Register' : 'Update'}">
+    </button>
+
     <a th:href="@{/customer}">Cancel</a>
+
 </form>
+
 </body>
 </html>

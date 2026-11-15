@@ -13,7 +13,7 @@ public class OrderAssignment {
     public OrderAssignment( String orderId, String staffId) {
       //  this.id = String.valueOf(counter);
        // counter++;
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
         this.orderId = orderId;
         this.staffId = staffId;
     }

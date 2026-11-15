@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,9 +6,9 @@
     <title>Server List</title>
 </head>
 <body>
+
 <h1>Server List</h1>
 
-<!-- Buton/link către formularul de adăugare -->
 <p>
     <a th:href="@{/server/new}">Add New Server</a>
 </p>
@@ -18,25 +19,32 @@
         <th>ID</th>
         <th>Name</th>
         <th>Designation</th>
-        <th>Status</th>
         <th>Action</th>
     </tr>
     </thead>
+
     <tbody>
-    <!-- Iterează prin colecția "servers" trimisă de ServerController -->
     <tr th:each="item : ${servers}">
-        <td th:text="${item.id}">1</td>
-        <td th:text="${item.name}">John Doe</td>
-        <td th:text="${item.designation}">Waiter</td>
-        <td th:text="${item.status}">FREE</td>
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.designation}"></td>
+
         <td>
-            <!-- Formular POST pentru ștergere -->
-            <form th:action="@{'/server/' + ${item.id} + '/delete'}" method="post">
+            <form th:action="@{/server/details/{id}(id=${item.id})}" method="get">
+                <button type="submit">Details</button>
+            </form>
+
+            <form th:action="@{/server/edit/{id}(id=${item.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+
+            <form th:action="@{/server/{id}/delete(id=${item.id})}" method="post">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>

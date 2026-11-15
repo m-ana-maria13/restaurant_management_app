@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Details</title>
+</head>
+<body>
+
+<h1>Customer Details</h1>
+
+<p>ID: <span th:text="${customer.id}"></span></p>
+
+<p>Name: <span th:text="${customer.name}"></span></p>
+
+<p>Discount: <span th:text="${customer.discount}"></span></p>
+
+<h3>Orders</h3>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="order : ${customer.orders}">
+        <td th:text="${order.id}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/customer}">Back to list</a>
+
+</body>
+</html>

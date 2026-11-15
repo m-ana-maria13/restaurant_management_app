@@ -13,7 +13,7 @@ public class MenuItem {
     public MenuItem( String name, double price) {
        // this.id = String.valueOf(counter);
        // counter++;
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
 
         this.name = name;
         this.price = price;

@@ -14,7 +14,7 @@ public class CustomerRepository extends InFileRepository<Customer>{
 
     private final OrderRepository orderRepository;
     public CustomerRepository(OrderRepository orderRepository) {
-        super("src/main/resources/data/cusomers.json", Customer.class);
+        super("src/main/resources/data/customers.json", Customer.class);
         this.orderRepository = orderRepository;
     }
 

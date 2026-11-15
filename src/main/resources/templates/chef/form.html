@@ -1,31 +1,40 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Chef</title>
+    <title>Chef Form</title>
 </head>
 <body>
-<h1>Add New Chef</h1>
 
-<!-- th:object="${chef}" conectează formularul la obiectul pasat din Controller -->
-<!-- th:action="@{/chef}" trimite cererea POST către salvare -->
-<form th:action="@{/chef}" th:object="${chef}" method="post">
+<h1 th:text="${chef.id == null ? 'Add New Chef' : 'Edit Chef'}"></h1>
+
+<form th:action="${chef.id == null ? '/chef' : '/chef/edit'}"
+      th:object="${chef}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
     <div>
         <label for="name">Name:</label><br>
-        <!-- th:field="*{name}" setează automat atributul "name" al obiectului Chef -->
-        <input type="text" id="name" th:field="*{name}" required />
+        <input type="text" id="name" th:field="*{name}" required>
     </div>
+
     <br>
 
     <div>
         <label for="specialization">Specialization:</label><br>
-        <!-- th:field="*{specialization}" setează atributul "specialization" -->
-        <input type="text" id="specialization" th:field="*{specialization}" required />
+        <input type="text" id="specialization" th:field="*{specialization}" required>
     </div>
+
     <br>
 
-    <button type="submit">Save</button>
+    <button type="submit"
+            th:text="${chef.id == null ? 'Save' : 'Update'}">
+    </button>
+
     <a th:href="@{/chef}">Cancel</a>
+
 </form>
+
 </body>
 </html>

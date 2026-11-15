@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Item Details</title>
+</head>
+<body>
+
+<h1>Menu Item Details</h1>
+
+<p>ID: <span th:text="${menuItem.id}"></span></p>
+
+<p>Name: <span th:text="${menuItem.name}"></span></p>
+
+<p>Price: <span th:text="${menuItem.price}"></span></p>
+
+<a th:href="@{/menuItem}">Back to list</a>
+
+</body>
+</html>

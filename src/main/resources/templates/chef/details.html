@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chef Details</title>
+</head>
+<body>
+
+<h1>Chef Details</h1>
+
+<p>ID: <span th:text="${chef.id}"></span></p>
+
+<p>Name: <span th:text="${chef.name}"></span></p>
+
+<p>Specialization: <span th:text="${chef.specialization}"></span></p>
+
+<a th:href="@{/chef}">Back to list</a>
+
+</body>
+</html>

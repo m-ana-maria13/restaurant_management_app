@@ -12,7 +12,7 @@ public class Bill {
     public Bill( String orderId, double totalAmount) {
       //  this.id = String.valueOf(counter);
        // counter++;
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
         this.orderId = orderId;
         this.totalAmount = totalAmount;
     }

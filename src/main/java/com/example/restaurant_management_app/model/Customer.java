@@ -3,7 +3,6 @@ package com.example.restaurant_management_app.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 public class Customer {
 
@@ -15,7 +14,7 @@ public class Customer {
 
 
     public Customer(String name, List<Order> orders) {
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
       //  counter++;
         this.name = name;
         this.orders = orders;
@@ -31,7 +30,7 @@ public class Customer {
     public Customer(String name, List<Order> orders, double discount) {
        // this.id = String.valueOf(counter);
        // counter++;
-        this.id= UUID.randomUUID().toString();
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
         this.name = name;
         this.orders = orders;
         this.discount=discount; //procente, pana in 70 la suta

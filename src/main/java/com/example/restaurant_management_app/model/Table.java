@@ -16,13 +16,13 @@ public class Table {
     private Status occupiedStatus;
     private int numberPeople;
 
-    public Table( List<Order> orders, int nrPeople) {
+    public Table( List<Order> orders, int numberPeople) {
      //   this.id = String.valueOf(counter);
      //   counter++;
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
         this.orders = orders;
         this.occupiedStatus = Status.FREE;
-        this.numberPeople = nrPeople;
+        this.numberPeople = numberPeople;
     }
 
 

@@ -1,31 +1,40 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Menu Item</title>
+    <title>Menu Item Form</title>
 </head>
 <body>
-<h1>Add New Menu Item</h1>
 
-<!-- th:object="${menuItem}" conectează formularul la obiectul pasat din Controller -->
-<!-- th:action="@{/menuItem}" trimite cererea POST către salvare -->
-<form th:action="@{/menuItem}" th:object="${menuItem}" method="post">
+<h1 th:text="${menuItem.id == null ? 'Add New Menu Item' : 'Edit Menu Item'}"></h1>
+
+<form th:action="${menuItem.id == null ? '/menuItem' : '/menuItem/edit'}"
+      th:object="${menuItem}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
     <div>
         <label for="name">Name:</label><br>
-        <!-- th:field="*{name}" setează automat atributul "name" al obiectului MenuItem -->
-        <input type="text" id="name" th:field="*{name}" required />
+        <input type="text" id="name" th:field="*{name}" required>
     </div>
+
     <br>
 
     <div>
         <label for="price">Price:</label><br>
-        <!-- th:field="*{price}" setează atributul "price"; trebuie să fie > 0 (validat în MenuItemService) -->
-        <input type="number" id="price" th:field="*{price}" min="0.01" step="0.01" required />
+        <input type="number" id="price" th:field="*{price}" step="0.01" min="0" required>
     </div>
+
     <br>
 
-    <button type="submit">Save</button>
+    <button type="submit"
+            th:text="${menuItem.id == null ? 'Save' : 'Update'}">
+    </button>
+
     <a th:href="@{/menuItem}">Cancel</a>
+
 </form>
+
 </body>
 </html>

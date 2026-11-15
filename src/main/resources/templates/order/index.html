@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,11 +6,11 @@
     <title>Order List</title>
 </head>
 <body>
+
 <h1>Order List</h1>
 
-<!-- Buton/link către formularul de adăugare -->
 <p>
-    <a th:href="@{/order/new}">Add New Order</a>
+    <a th:href="@{/order/new}">Create New Order</a>
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0">
@@ -19,27 +20,26 @@
         <th>Customer ID</th>
         <th>Table ID</th>
         <th>Take Away</th>
-        <th>Status</th>
-        <th>Items</th>
         <th>Action</th>
     </tr>
     </thead>
+
     <tbody>
-    <!-- Iterează prin colecția "orders" trimisă de OrderController -->
     <tr th:each="item : ${orders}">
-        <td th:text="${item.id}">1</td>
-        <td th:text="${item.customerId}">1</td>
-        <!-- tableId e null pentru comenzile take away -->
-        <td th:text="${item.tableId != null} ? ${item.tableId} : '-'">1</td>
-        <td th:text="${item.takeAway}">false</td>
-        <td th:text="${item.status}">OPEN</td>
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.customerId}"></td>
+        <td th:text="${item.tableId}"></td>
+        <td th:text="${item.takeAway}"></td>
+
         <td>
-            <!-- Iterează prin liniile comenzii: id produs x cantitate -->
-            <span th:each="line : ${item.orderLines}"
-                  th:text="${line.menuItemId} + ' x ' + ${line.quantity}"></span>
-        </td>
-        <td>
-            <!-- Formular POST pentru ștergere -->
+            <form th:action="@{/order/details/{id}(id=${item.id})}" method="get">
+                <button type="submit">Details</button>
+            </form>
+
+            <form th:action="@{/order/edit/{id}(id=${item.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+
             <form th:action="@{/order/{id}/delete(id=${item.id})}" method="post">
                 <button type="submit">Delete</button>
             </form>
@@ -47,5 +47,6 @@
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>

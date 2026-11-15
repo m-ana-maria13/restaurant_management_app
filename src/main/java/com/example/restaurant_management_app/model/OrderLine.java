@@ -13,7 +13,7 @@ public class OrderLine {
     public OrderLine(String menuItemId, double quantity) {
         //this.id = String.valueOf(counter);
        // counter++;
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
         this.menuItemId = menuItemId;
         this.quantity = quantity;
     }

@@ -15,7 +15,7 @@ public abstract class Staff {
     public Staff( String name) {
        // this.id = String.valueOf(counter);
       //  counter++;
-        this.id = String.valueOf(new Random().nextInt());
+        this.id = String.valueOf(new Random().nextInt(100000) + 1);
         this.name = name;
         this.status=Status.FREE;
     }

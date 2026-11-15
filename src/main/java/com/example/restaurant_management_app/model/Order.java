@@ -22,7 +22,7 @@ public class Order {
         public Order(String customerId, String tableId, boolean takeAway) {
           //  this.id = String.valueOf(counter);
            // counter++;
-            this.id = String.valueOf(new Random().nextInt());
+            this.id = String.valueOf(new Random().nextInt(100000) + 1);
             this.customerId = customerId;
             this.tableId = tableId;
             this.status = Status.OPEN;

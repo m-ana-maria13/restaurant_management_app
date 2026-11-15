@@ -1,52 +1,45 @@
-[
-  {
-    "id": "1",
-    "name": "Pepperoni Pizza",
-    "price": 22.00
-  },
-  {
-    "id": "2",
-    "name": "Spaghetti Bolognese",
-    "price": 29.50
-  },
-  {
-    "id": "3",
-    "name": "Pasta Carbonara",
-    "price": 34.00
-  },
-  {
-    "id": "4",
-    "name": "Beef Burger",
-    "price": 42.00
-  },
-  {
-    "id": "5",
-    "name": "Grilled Chicken Breast",
-    "price": 38.50
-  },
-  {
-    "id": "6",
-    "name": "Salmon with Vegetables",
-    "price": 56.00
-  },
-  {
-    "id": "7",
-    "name": "Romanian Cheese Doughnuts with Sour Cream",
-    "price": 24.00
-  },
-  {
-    "id": "8",
-    "name": "Tiramisu",
-    "price": 21.00
-  },
-  {
-    "id": "9",
-    "name": "Homemade Lemonade",
-    "price": 14.00
-  },
-  {
-    "id": "10",
-    "name": "Espresso Coffee",
-    "price": 10.00
-  }
-]
+[ {
+  "name" : "Pepperoni Pizza",
+  "price" : 22.0,
+  "id" : "1"
+}, {
+  "name" : "Spaghetti Bolognese",
+  "price" : 29.5,
+  "id" : "2"
+}, {
+  "name" : "Pasta Carbonara",
+  "price" : 34.0,
+  "id" : "3"
+}, {
+  "name" : "Beef Burger",
+  "price" : 42.0,
+  "id" : "4"
+}, {
+  "name" : "Grilled Chicken Breast",
+  "price" : 38.5,
+  "id" : "5"
+}, {
+  "name" : "Salmon with Vegetables",
+  "price" : 56.0,
+  "id" : "6"
+}, {
+  "name" : "Romanian Cheese Doughnuts with Sour Cream",
+  "price" : 24.0,
+  "id" : "7"
+}, {
+  "name" : "Tiramisu",
+  "price" : 21.0,
+  "id" : "8"
+}, {
+  "name" : "Homemade Lemonade",
+  "price" : 14.0,
+  "id" : "9"
+}, {
+  "name" : "Espresso Coffee",
+  "price" : 10.0,
+  "id" : "10"
+}, {
+  "name" : "Hawaian Pizza",
+  "price" : 15.0,
+  "id" : "793749106"
+} ]

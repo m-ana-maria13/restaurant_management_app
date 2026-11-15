@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,11 +6,11 @@
     <title>Customer List</title>
 </head>
 <body>
+
 <h1>Customer List</h1>
 
-<!-- Buton/link către formularul de adăugare -->
 <p>
-    <a th:href="@{/customer/new}">Add New Customer</a>
+    <a th:href="@{/customer/new}">Register New Customer</a>
 </p>
 
 <table border="1" cellpadding="8" cellspacing="0">
@@ -17,24 +18,35 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Discount (%)</th>
+        <th>Discount</th>
+        <th>Orders</th>
         <th>Action</th>
     </tr>
     </thead>
+
     <tbody>
-    <!-- Iterează prin colecția "customers" trimisă de CustomerController -->
     <tr th:each="item : ${customers}">
-        <td th:text="${item.id}">1</td>
-        <td th:text="${item.name}">John Doe</td>
-        <td th:text="${item.discount}">0.0</td>
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.discount}"></td>
+        <td th:text="${item.orders.size()}"></td>
+
         <td>
-            <!-- Formular POST pentru ștergere -->
-            <form th:action="@{'/customer/' + ${item.id} + '/delete'}" method="post">
+            <form th:action="@{/customer/details/{id}(id=${item.id})}" method="get">
+                <button type="submit">Details</button>
+            </form>
+
+            <form th:action="@{/customer/edit/{id}(id=${item.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+
+            <form th:action="@{/customer/{id}/delete(id=${item.id})}" method="post">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>

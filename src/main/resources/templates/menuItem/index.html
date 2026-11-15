@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,9 +6,9 @@
     <title>Menu Item List</title>
 </head>
 <body>
+
 <h1>Menu Item List</h1>
 
-<!-- Buton/link către formularul de adăugare -->
 <p>
     <a th:href="@{/menuItem/new}">Add New Menu Item</a>
 </p>
@@ -21,20 +22,29 @@
         <th>Action</th>
     </tr>
     </thead>
+
     <tbody>
-    <!-- Iterează prin colecția "menuItems" trimisă de MenuItemController -->
     <tr th:each="item : ${menuItems}">
-        <td th:text="${item.id}">1</td>
-        <td th:text="${item.name}">Pizza</td>
-        <td th:text="${item.price}">0.0</td>
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+
         <td>
-            <!-- Formular POST pentru ștergere -->
-            <form th:action="@{'/menuItem/' + ${item.id} + '/delete'}" method="post">
+            <form th:action="@{/menuItem/details/{id}(id=${item.id})}" method="get">
+                <button type="submit">Details</button>
+            </form>
+
+            <form th:action="@{/menuItem/edit/{id}(id=${item.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+
+            <form th:action="@{/menuItem/{id}/delete(id=${item.id})}" method="post">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>
