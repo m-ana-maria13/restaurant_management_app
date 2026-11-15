@@ -2,6 +2,7 @@ package com.example.restaurant_management_app.controller;
 
 
 import com.example.restaurant_management_app.model.Bill;
+import com.example.restaurant_management_app.model.MenuItem;
 import com.example.restaurant_management_app.model.Order;
 import com.example.restaurant_management_app.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,32 @@ public class OrderController {
         return "redirect:/order";
     }
 
+
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable String id, Model model) {
+        Order order= orderService.getOrderById(id);
+
+        model.addAttribute("order", order);
+
+        return "order/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Order order= orderService.getOrderById(id);
+        model.addAttribute("order", order);
+
+        return "order/form";
+    }
+
+
+    @PostMapping("/edit")
+    public String updateBill(@ModelAttribute  Order order) {
+        orderService.update(order);
+
+        return "redirect:/order";
+    }
+
 }
+
+

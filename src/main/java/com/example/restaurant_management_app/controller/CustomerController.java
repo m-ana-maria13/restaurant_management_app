@@ -1,6 +1,7 @@
 package com.example.restaurant_management_app.controller;
 
 import com.example.restaurant_management_app.model.Bill;
+import com.example.restaurant_management_app.model.Chef;
 import com.example.restaurant_management_app.model.Customer;
 import com.example.restaurant_management_app.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,4 +50,33 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return "redirect:/customer";
     }
+
+
+
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable String id, Model model) {
+        Customer customer= customerService.getCustomerById(id);
+
+        model.addAttribute("customer", customer);
+
+        return "customer/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Customer customer= customerService.getCustomerById(id);
+
+        model.addAttribute("customer", customer);
+
+        return "customer/form";
+    }
+
+
+    @PostMapping("/edit")
+    public String updateBill(@ModelAttribute  Customer customer) {
+        customerService.update(customer);
+
+        return "redirect:/customer";
+    }
+
 }

@@ -46,5 +46,32 @@ public class ChefController {
     }
 
 
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable String id, Model model) {
+        Chef chef= chefService.getById(id);
+
+        model.addAttribute("chef", chef);
+
+        return "chef/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Chef chef= chefService.getById(id);
+
+        model.addAttribute("chef", chef);
+
+        return "chef/form";
+    }
+
+
+    @PostMapping("/edit")
+    public String updateBill(@ModelAttribute  Chef chef) {
+        chefService.update(chef);
+
+        return "redirect:/chef";
+    }
+
+
 
 }

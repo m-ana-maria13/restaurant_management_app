@@ -141,6 +141,9 @@ public class OrderService {
             throw new IllegalArgumentException("Invalid Order!");
         }
 
+        if(order.getStatus()== Order.Status.CLOSED){
+            throw new IllegalStateException("Order is already closed!");
+        }
         order.setStatus(Order.Status.CLOSED);
 
         if(!order.getTakeAway() &&  order.getTableId() != null){

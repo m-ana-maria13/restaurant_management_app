@@ -65,6 +65,7 @@ public class BillService {
         if(orderId==null){
             throw new IllegalArgumentException("OrderId null!");
         }
+
        return orderService.closeOrder(orderId);
 
     }

@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.controller;
 
+import com.example.restaurant_management_app.model.Customer;
 import com.example.restaurant_management_app.model.MenuItem;
 import com.example.restaurant_management_app.service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,34 @@ public class MenuItemController {
     @PostMapping("/{id}/delete")
     public String deleteMenuItem(@PathVariable("id") String id){
         menuItemService.deleteMenuItem(id);
+        return "redirect:/menuItem";
+    }
+
+
+
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable String id, Model model) {
+        MenuItem menuItem= menuItemService.getById(id);
+
+        model.addAttribute("menuItem", menuItem);
+
+        return "menuItem/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        MenuItem menuItem=  menuItemService.getById(id);
+
+        model.addAttribute("menuItem", menuItem);
+
+        return "menuItem/form";
+    }
+
+
+    @PostMapping("/edit")
+    public String updateBill(@ModelAttribute  MenuItem menuItem) {
+        menuItemService.update(menuItem);
+
         return "redirect:/menuItem";
     }
 
