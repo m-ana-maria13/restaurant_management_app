@@ -39,7 +39,7 @@ public class TableController {
 
     @PostMapping
     public String createTable(Table table){
-        tableService.addNewTable(table.getId(), new ArrayList<>(), table.getNumberPeople());
+        tableService.addNewTable(new ArrayList<>(), table.getNumberPeople());
         return "redirect:/table";
     }
 
