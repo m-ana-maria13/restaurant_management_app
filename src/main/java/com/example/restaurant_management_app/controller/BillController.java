@@ -68,7 +68,7 @@ public class BillController {
     public String updateBill(@ModelAttribute Bill bill) {
         billService.update(bill);
 
-        return "redirect:/bills";
+        return "redirect:/bill";
     }
 
 

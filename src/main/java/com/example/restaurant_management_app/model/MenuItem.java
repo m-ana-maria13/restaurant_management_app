@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.model;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class MenuItem {
@@ -12,7 +13,7 @@ public class MenuItem {
     public MenuItem( String name, double price) {
        // this.id = String.valueOf(counter);
        // counter++;
-        this.id= UUID.randomUUID().toString();
+        this.id = String.valueOf(new Random().nextInt());
 
         this.name = name;
         this.price = price;

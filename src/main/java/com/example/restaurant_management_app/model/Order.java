@@ -2,6 +2,7 @@ package com.example.restaurant_management_app.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class Order {
@@ -21,7 +22,7 @@ public class Order {
         public Order(String customerId, String tableId, boolean takeAway) {
           //  this.id = String.valueOf(counter);
            // counter++;
-            this.id= UUID.randomUUID().toString();
+            this.id = String.valueOf(new Random().nextInt());
             this.customerId = customerId;
             this.tableId = tableId;
             this.status = Status.OPEN;

@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.model;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class Bill {
@@ -11,7 +12,7 @@ public class Bill {
     public Bill( String orderId, double totalAmount) {
       //  this.id = String.valueOf(counter);
        // counter++;
-        this.id= UUID.randomUUID().toString();
+        this.id = String.valueOf(new Random().nextInt());
         this.orderId = orderId;
         this.totalAmount = totalAmount;
     }

@@ -39,7 +39,7 @@ public class TableController {
 
     @PostMapping
     public String createTable(Table table){
-        tableService.addNewTable(table.getNumber(), new ArrayList<>(), table.getNumberPeople());
+        tableService.addNewTable(table.getId(), new ArrayList<>(), table.getNumberPeople());
         return "redirect:/table";
     }
 
@@ -49,6 +49,32 @@ public class TableController {
         tableService.deleteTable(id);
         return "redirect:/table";
     }
+
+    @GetMapping("/details/{id}")
+    public String showDetails(@PathVariable String id, Model model) {
+        Table table = tableService.getTableById(id);
+
+        model.addAttribute("table",table);
+
+        return "table/details";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Table table = tableService.getTableById(id);
+
+        model.addAttribute("table", table);
+
+        return "table/form";
+    }
+
+    @PostMapping("/edit")
+    public String updateBill(@ModelAttribute Table table) {
+        tableService.update(table);
+
+        return "redirect:/table";
+    }
+
 
 
 }

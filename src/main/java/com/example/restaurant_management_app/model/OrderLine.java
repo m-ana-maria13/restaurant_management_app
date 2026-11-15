@@ -1,5 +1,6 @@
 package com.example.restaurant_management_app.model;
 
+import java.util.Random;
 import java.util.UUID;
 
 public class OrderLine {
@@ -12,7 +13,7 @@ public class OrderLine {
     public OrderLine(String menuItemId, double quantity) {
         //this.id = String.valueOf(counter);
        // counter++;
-        this.id= UUID.randomUUID().toString();
+        this.id = String.valueOf(new Random().nextInt());
         this.menuItemId = menuItemId;
         this.quantity = quantity;
     }

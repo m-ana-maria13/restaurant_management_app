@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,9 +6,9 @@
     <title>Bill List</title>
 </head>
 <body>
+
 <h1>Bill List</h1>
 
-<!-- Buton/link către formularul de generare -->
 <p>
     <a th:href="@{/bill/new}">Generate New Bill</a>
 </p>
@@ -21,20 +22,29 @@
         <th>Action</th>
     </tr>
     </thead>
+
     <tbody>
-    <!-- Iterează prin colecția "bills" trimisă de BillController -->
     <tr th:each="item : ${bills}">
-        <td th:text="${item.id}">1</td>
-        <td th:text="${item.orderId}">1</td>
-        <td th:text="${item.totalAmount}">0.0</td>
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.orderId}"></td>
+        <td th:text="${item.totalAmount}"></td>
+
         <td>
-            <!-- Formular POST pentru ștergere -->
-            <form th:action="@{'/bill/' + ${item.id} + '/delete'}" method="post">
+            <form th:action="@{/bill/details/{id}(id=${item.id})}" method="get">
+                <button type="submit">Details</button>
+            </form>
+
+            <form th:action="@{/bill/edit/{id}(id=${item.id})}" method="get">
+                <button type="submit">Edit</button>
+            </form>
+
+            <form th:action="@{/bill/{id}/delete(id=${item.id})}" method="post">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     </tbody>
 </table>
+
 </body>
 </html>
