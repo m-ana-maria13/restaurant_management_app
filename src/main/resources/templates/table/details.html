@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Details</title>
+</head>
+<body>
+
+<h1>Table Details</h1>
+
+<p>ID: <span th:text="${table.id}"></span></p>
+
+<p>Number of People: <span th:text="${table.numberPeople}"></span></p>
+
+<p>Occupied Status: <span th:text="${table.occupiedStatus}"></span></p>
+
+<h3>Orders</h3>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="order : ${table.orders}">
+        <td th:text="${order.id}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/table}">Back to list</a>
+
+</body>
+</html>
