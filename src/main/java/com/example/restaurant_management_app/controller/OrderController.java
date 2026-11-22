@@ -74,6 +74,12 @@ public class OrderController {
         return "redirect:/order";
     }
 
+
+    @PostMapping("/{id}/addOrderLine")
+    public String addOrderLine(@ModelAttribute  Order order, @PathVariable("id") String menuItemId, @PathVariable("quantity") Double quantity){
+        orderService.addOrderLine(order.getId(),menuItemId,quantity);
+        return "redirect:/order";
+    }
 }
 
 

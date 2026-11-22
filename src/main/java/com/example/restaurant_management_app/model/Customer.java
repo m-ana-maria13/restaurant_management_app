@@ -3,10 +3,16 @@ package com.example.restaurant_management_app.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
 
-    private static int counter=1;
+   // private static int counter=1;
+    @Id
     private String id;
     private String name;
     private List<Order> orders;

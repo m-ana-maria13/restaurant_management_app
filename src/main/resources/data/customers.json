@@ -242,10 +242,13 @@
   "discount" : 5.0,
   "id" : "9",
   "name" : "Vlad Enache",
-  "orders" : [ ]
-}, {
-  "discount" : 25.0,
-  "id" : "10",
-  "name" : "Sofia Matei",
-  "orders" : [ ]
+  "orders" : [ {
+    "customerId" : "9",
+    "tableId" : "1",
+    "takeAway" : false,
+    "assignments" : [ ],
+    "id" : "91141",
+    "orderLines" : [ ],
+    "status" : "OPEN"
+  } ]
 } ]

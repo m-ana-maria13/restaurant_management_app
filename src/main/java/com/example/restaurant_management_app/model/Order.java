@@ -5,16 +5,25 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "orders")
 public class Order {
 
         public enum Status{
             OPEN, CLOSED
         }
        // private static int counter=1;
+        @Id
         private String id;
         private String customerId;
         private String tableId;
+
+        @Enumerated(EnumType.STRING)
         private Status status; //open/closed
+
         private List<OrderLine> orderLines;
         private List<OrderAssignment> assignments;
         private Boolean takeAway; // daca e takeaway, atunci nu se mai ocupa masa, ! nu se face delivery, vine clientul

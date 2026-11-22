@@ -3,8 +3,15 @@ package com.example.restaurant_management_app.model;
 import java.util.Random;
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "bills")
 public class Bill {
     //private static int counter=1;
+    @Id
     private String id;
     private String orderId;
     private double totalAmount;

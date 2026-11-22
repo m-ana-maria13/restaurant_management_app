@@ -39,26 +39,6 @@
   } ],
   "status" : "CLOSED"
 }, {
-  "customerId" : "3",
-  "tableId" : "3",
-  "takeAway" : false,
-  "assignments" : [ {
-    "orderId" : "4",
-    "staffId" : "14",
-    "id" : "4"
-  } ],
-  "id" : "4",
-  "orderLines" : [ {
-    "menuItemId" : "7",
-    "quantity" : 2.0,
-    "id" : "7"
-  }, {
-    "menuItemId" : "8",
-    "quantity" : 2.0,
-    "id" : "8"
-  } ],
-  "status" : "OPEN"
-}, {
   "customerId" : "4",
   "tableId" : "4",
   "takeAway" : false,
@@ -196,6 +176,34 @@
     "menuItemId" : "4",
     "quantity" : 1.0,
     "id" : "4"
+  } ],
+  "status" : "CLOSED"
+}, {
+  "customerId" : "9",
+  "tableId" : "1",
+  "takeAway" : false,
+  "assignments" : [ ],
+  "id" : "91141",
+  "orderLines" : [ ],
+  "status" : "OPEN"
+}, {
+  "customerId" : "3",
+  "tableId" : "3",
+  "takeAway" : false,
+  "assignments" : [ {
+    "orderId" : "4",
+    "staffId" : "14",
+    "id" : "4"
+  } ],
+  "id" : "4",
+  "orderLines" : [ {
+    "menuItemId" : "7",
+    "quantity" : 2.0,
+    "id" : "7"
+  }, {
+    "menuItemId" : "8",
+    "quantity" : 2.0,
+    "id" : "8"
   } ],
   "status" : "CLOSED"
 } ]

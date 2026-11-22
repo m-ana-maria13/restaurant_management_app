@@ -24,6 +24,8 @@ public class CustomerRepository extends InFileRepository<Customer>{
     }
 
     private void resolveOrders(Customer customer) {
+        if (customer.getOrders() == null) return;
+
         List<Order> fullOrders = new ArrayList<>();
 
         for (Order order : customer.getOrders()) {

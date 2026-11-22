@@ -3,13 +3,21 @@ package com.example.restaurant_management_app.model;
 import java.util.Random;
 import java.util.UUID;
 
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+
+
+@MappedSuperclass
 public abstract class Staff {
     public enum Status{
         FREE, BUSY
     }
     //private static int counter=1;
     private String name;
+    @Id
     private String id;
+
+    @Enumerated(EnumType.STRING)
     private Status status; // neue Eigenschaft
 
     public Staff( String name) {

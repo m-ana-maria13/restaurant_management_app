@@ -5,15 +5,28 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+
+
+@Entity
+@jakarta.persistence.Table(name = "tables")
 public class Table {
+
 
     public enum Status{
         FREE, OCCUPIED
     }
    // private static int counter=1;
+    @Id
     private String id;
     private List<Order> orders;
+
+    @Enumerated(EnumType.STRING)
     private Status occupiedStatus;
+
     private int numberPeople;
 
     public Table( List<Order> orders, int numberPeople) {
