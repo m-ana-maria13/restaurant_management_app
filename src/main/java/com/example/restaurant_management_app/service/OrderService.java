@@ -103,7 +103,7 @@ public class OrderService {
         }
 
         if(!itemExists){//prima data cand adaug produsul
-            OrderLine orderLine= new OrderLine(menuItemId,quantity);
+            OrderLine orderLine= new OrderLine(menuItemId,quantity, orderId);
             order.getOrderLines().add(orderLine); //imi adaug in arrayul de orderlines produsul nou
         }
 

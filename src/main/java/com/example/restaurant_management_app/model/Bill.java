@@ -3,8 +3,8 @@ package com.example.restaurant_management_app.model;
 import java.util.Random;
 import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,7 +13,13 @@ public class Bill {
     //private static int counter=1;
     @Id
     private String id;
+
     private String orderId;
+    @OneToOne
+    @JoinColumn(name = "orderId", insertable = false, updatable = false)
+    @JsonIgnore
+    private Order order;
+
     private double totalAmount;
 
     public Bill( String orderId, double totalAmount) {

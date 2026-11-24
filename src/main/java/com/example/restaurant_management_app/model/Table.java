@@ -5,10 +5,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -22,6 +20,9 @@ public class Table {
    // private static int counter=1;
     @Id
     private String id;
+
+    @OneToMany(mappedBy = "table", fetch = FetchType.EAGER)
+    @JsonIgnore // Oprește bucla infinită când Jackson scrie în tables.json
     private List<Order> orders;
 
     @Enumerated(EnumType.STRING)

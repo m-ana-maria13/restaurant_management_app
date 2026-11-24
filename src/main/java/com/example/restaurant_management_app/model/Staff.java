@@ -1,13 +1,14 @@
 package com.example.restaurant_management_app.model;
 
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
-
-
-@MappedSuperclass
+@Entity
+@Table(name = "staff")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Staff {
     public enum Status{
         FREE, BUSY

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
@@ -18,14 +19,28 @@ public class Order {
        // private static int counter=1;
         @Id
         private String id;
+
         private String customerId;
+        @ManyToOne
+        @JoinColumn(name = "customerId", insertable = false, updatable = false)
+        @JsonIgnore
+        private Customer customer;
+
         private String tableId;
+        @ManyToOne
+        @JoinColumn(name = "tableId", insertable = false, updatable = false)
+        @JsonIgnore
+        private Table table;
 
         @Enumerated(EnumType.STRING)
         private Status status; //open/closed
 
+        @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
         private List<OrderLine> orderLines;
+
+        @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
         private List<OrderAssignment> assignments;
+
         private Boolean takeAway; // daca e takeaway, atunci nu se mai ocupa masa, ! nu se face delivery, vine clientul
 
         public Order(String customerId, String tableId, boolean takeAway) {

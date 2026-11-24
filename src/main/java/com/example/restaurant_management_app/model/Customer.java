@@ -3,8 +3,9 @@ package com.example.restaurant_management_app.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +16,9 @@ public class Customer {
     @Id
     private String id;
     private String name;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Order> orders;
     private double discount;
 
