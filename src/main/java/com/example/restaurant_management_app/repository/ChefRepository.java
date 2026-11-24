@@ -4,11 +4,12 @@ import com.example.restaurant_management_app.model.Bill;
 import com.example.restaurant_management_app.model.Chef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Profile("mysql")
 interface JpaChefRepository extends JpaRepository<Chef,String>{}
 
 

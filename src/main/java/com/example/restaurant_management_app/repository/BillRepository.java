@@ -61,11 +61,11 @@ public class BillRepository implements IRepository<Bill>{
 
     @Override
     public Bill findById(String id) {
-        return findById(id);
+        return  repository.findById(id);
     }
 
     @Override
     public Boolean delete(Bill bill) {
-        return delete(bill);
+        return  repository.delete(bill);
     }
 }

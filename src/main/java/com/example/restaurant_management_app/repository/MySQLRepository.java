@@ -15,21 +15,37 @@ public abstract class MySQLRepository<T> implements IRepository<T> {
 
     @Override
     public T save(T entity) {
-        return null;
+
+        // INSERT dacă id-ul nu există în DB,
+        // UPDATE dacă id-ul există deja
+        // returnează entitatea salvată
+        return jpaRepository.save(entity);
     }
 
     @Override
     public List<T> findAll() {
-        return List.of();
+
+        return jpaRepository.findAll();
     }
 
     @Override
     public T findById(String id) {
-        return null;
+        if (id == null) {
+            return null;
+        }
+        return jpaRepository.findById(id).orElse(null);
     }
 
     @Override
     public Boolean delete(T entity) {
-        return null;
+        if (entity == null) {
+            return false;
+        }
+        String id = getId(entity);
+        if (id != null && jpaRepository.existsById(id)) {
+            jpaRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
