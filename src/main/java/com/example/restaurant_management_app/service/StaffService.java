@@ -1,40 +1,57 @@
 package com.example.restaurant_management_app.service;
 
 import com.example.restaurant_management_app.model.*;
+import com.example.restaurant_management_app.repository.ChefRepository;
+import com.example.restaurant_management_app.repository.ServerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.restaurant_management_app.repository.StaffRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class StaffService {
-    private final StaffRepository staffRepository;
+    private final ChefRepository chefRepository;
+    private final ServerRepository serverRepository;
 
     @Autowired
-    public StaffService(StaffRepository staffRepo) {
-        this.staffRepository = staffRepo;
+    public StaffService(ChefRepository chefRepository, ServerRepository serverRepository) {
+        this.chefRepository = chefRepository;
+        this.serverRepository = serverRepository;
     }
 
-
-
-
-    public List<Staff> getAll() {
-        return staffRepository.findAll();
+    public List<Staff> getAllStaff() {
+        List<Staff> allStaff = new ArrayList<>();
+        allStaff.addAll(chefRepository.findAll());
+        allStaff.addAll(serverRepository.findAll());
+        return allStaff;
     }
 
-
-    public Staff getById(String id) {
-        return staffRepository.findById(id);
+    public Staff findById(String id) {
+        Staff chef = chefRepository.findById(id);
+        if (chef != null) {
+            return chef;
+        }
+        return serverRepository.findById(id);
     }
 
-
-    public Boolean removeStaff(String id) {
-        Staff staff = existingStaff(id);
-        return staffRepository.delete(staff);
+    public Staff save(Staff staff) {
+        if (staff instanceof Chef) {
+            return chefRepository.save((Chef) staff);
+        } else if (staff instanceof Server) {
+            return serverRepository.save((Server) staff);
+        }
+        return null;
     }
 
-
+    public boolean delete(Staff staff) {
+        if (staff instanceof Chef) {
+            return chefRepository.delete((Chef) staff);
+        } else if (staff instanceof Server) {
+            return serverRepository.delete((Server) staff);
+        }
+        return false;
+    }
 
 
 
@@ -52,33 +69,33 @@ public class StaffService {
         }
 
         staff.setStatus(status);
-        return staffRepository.save(staff);
+
+        if (staff instanceof Chef)
+            return chefRepository.save((Chef) staff);
+        else
+            return serverRepository.save((Server) staff);
     }
 
 
     private Staff existingStaff(String id) {
-        Staff staff = staffRepository.findById(id);
+        Staff staff = chefRepository.findById(id);
+
+        if(staff ==null){
+            staff = serverRepository.findById(id);
+        }
         if (staff == null) {
             throw new IllegalArgumentException("Id not valid!");
         }
         return staff;
     }
 
-    public Staff deleteStaff(String staffId){
-        if(staffId == null)
-            throw new IllegalArgumentException("Id null!");
-
-        Staff staff = staffRepository.findById(staffId);
-        if(staff== null)
-            throw new IllegalArgumentException("Invalid id!");
-
-        staffRepository.delete(staff);
-        return staff;
-    }
-
 
     public Staff update(Staff staff){
-        staffRepository.save(staff);
+        if (staff instanceof Server)
+            serverRepository.save((Server) staff);
+
+        else if (staff instanceof Chef)
+            chefRepository.save((Chef) staff);
         return staff;
     }
 
