@@ -16,20 +16,18 @@ public class OrderService {
     private final TableRepository tableRepository ;
     private final TableService tableService;
     private final MenuRepository menuItemRepository ;
-    private final StaffRepository staffRepository ;
-    private final StaffService staffService;
+    final StaffService staffService;
 
 
     @Autowired
     public OrderService(OrderRepository orderRepository, CustomerRepository customerRepository,
                         TableRepository tableRepository, TableService tableService, MenuRepository menuItemRepository,
-                        StaffRepository staffRepository, StaffService staffService) {
+                         StaffService staffService) {
         this.orderRepository = orderRepository;
         this.customerRepository=customerRepository;
         this.tableRepository= tableRepository;
         this.tableService=tableService;
         this.menuItemRepository=menuItemRepository;
-        this.staffRepository=staffRepository;
         this.staffService=staffService;
     }
 
@@ -117,7 +115,7 @@ public class OrderService {
             throw new IllegalArgumentException("Invalid Order!");
         }
 
-        Staff staff = staffRepository.findById(staffId);
+        Staff staff = staffService.findById(staffId);
         if(staff==null){
             throw new IllegalArgumentException("Invalid staff memeber!");
         }
